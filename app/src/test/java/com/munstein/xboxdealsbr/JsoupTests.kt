@@ -34,8 +34,7 @@ class JsoupTests {
         var elements = doc.select("article" )
         var h2 = elements.get(0).select(".title")
         var a = h2.get(0).select("a")
-        var href = a.get(0)
-        var url = href.attr("href")
+        var url = a.attr("href")
         Assert.assertEquals("https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-09-15-01/", url)
     }
 }
