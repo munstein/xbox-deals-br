@@ -46,4 +46,9 @@ class JsoupTests {
         var tables = div.select("table")
         Assert.assertEquals(4, tables.size )
     }
+
+    @Test
+    fun getDealsFromTables(){
+        
+    }
 }
