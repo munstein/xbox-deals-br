@@ -35,6 +35,15 @@ class JsoupTests {
         var h2 = elements.get(0).select(".title")
         var a = h2.get(0).select("a")
         var url = a.attr("href")
-        Assert.assertEquals("https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-09-15-01/", url)
+        Assert.assertEquals(true, url.contains("https://www.arenaxbox.com.br/deals-with-gold"))
+    }
+
+    @Test
+    fun getTablesFromLink(){
+        var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
+        var dealsPageDocument = Jsoup.connect(url).get()
+        var div = dealsPageDocument.select(".entry-content")
+        var tables = div.select("table")
+        Assert.assertEquals(4, tables.size )
     }
 }
