@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr
 
 import android.util.Log
+import com.munstein.xboxdealsbr.model.Deal
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.junit.Assert
@@ -10,6 +11,7 @@ import org.junit.Test
 /**
  * Created by @Munstein on 14/01/2018. --22:52
  */
+
 class JsoupTests {
 
     private lateinit var doc : Document
@@ -55,6 +57,19 @@ class JsoupTests {
         var div = dealsPageDocument.select(".entry-content")
         var tables = div.select("table")
         var tableContents = tables[0].select("tr")
-        Assert.assertEquals(24, tableContents.size )
+        var deals = ArrayList<Deal>()
+
+        for (i in 2 .. tableContents.size-1){
+            var tds = tableContents[i].select("td")
+            var game = tds[0].text()
+            var type = tds[1].text()
+            var discount = tds[2].text()
+            var value = tds[3].text()
+            deals.add(Deal(game,type,discount,value))
+        }
+
+        Assert.assertEquals(deals.size, tableContents.size - 2)
+
     }
+
 }
