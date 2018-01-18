@@ -58,7 +58,6 @@ class JsoupTests {
         var tables = div.select("table")
         var tableContents = tables[0].select("tr")
         var deals = ArrayList<Deal>()
-
         for (i in 2 .. tableContents.size-1){
             var tds = tableContents[i].select("td")
             var game = tds[0].text()
@@ -67,9 +66,7 @@ class JsoupTests {
             var value = tds[3].text()
             deals.add(Deal(game,type,discount,value))
         }
-
         Assert.assertEquals(deals.size, tableContents.size - 2)
-
     }
 
 }
