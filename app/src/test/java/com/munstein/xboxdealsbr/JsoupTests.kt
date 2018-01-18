@@ -1,5 +1,6 @@
 package com.munstein.xboxdealsbr
 
+import android.util.Log
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.junit.Assert
@@ -49,6 +50,11 @@ class JsoupTests {
 
     @Test
     fun getDealsFromTables(){
-        
+        var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
+        var dealsPageDocument = Jsoup.connect(url).get()
+        var div = dealsPageDocument.select(".entry-content")
+        var tables = div.select("table")
+        var tableContents = tables[0].select("tr")
+        Assert.assertEquals(24, tableContents.size )
     }
 }
