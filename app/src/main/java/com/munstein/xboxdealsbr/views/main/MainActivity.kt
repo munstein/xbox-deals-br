@@ -1,7 +1,8 @@
-package com.munstein.xboxdealsbr
+package com.munstein.xboxdealsbr.views.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.munstein.xboxdealsbr.R
 
 class MainActivity : AppCompatActivity() {
 
