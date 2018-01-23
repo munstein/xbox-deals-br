@@ -1,6 +1,5 @@
 package com.munstein.xboxdealsbr
 
-import android.util.Log
 import com.munstein.xboxdealsbr.model.Deal
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
