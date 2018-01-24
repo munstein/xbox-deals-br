@@ -14,7 +14,7 @@ interface MainMVP {
     interface view{
         fun showDialog()
         fun hideDialog()
-        fun loadDeals()
+        fun loadDeals(deals : List<Deal>)
     }
 
     interface presenter{
