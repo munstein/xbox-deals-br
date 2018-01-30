@@ -1,14 +1,12 @@
 package com.munstein.xboxdealsbr.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
-import kotlinx.android.synthetic.main.holder_deal.view.*
 
 /**
  * Created by @Munstein on 25/01/2018. --14:55
