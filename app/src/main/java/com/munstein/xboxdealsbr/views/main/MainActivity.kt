@@ -28,4 +28,8 @@ class MainActivity : BaseActivity(), MainMVP.view {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun showMessage(msg: String) {
+        showToast(msg)
+    }
+
 }

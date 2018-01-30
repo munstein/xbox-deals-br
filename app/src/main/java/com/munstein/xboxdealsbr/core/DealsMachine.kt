@@ -10,16 +10,16 @@ import org.jsoup.select.Elements
  */
 class DealsMachine {
 
-    private val baseURL: String = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
-
-    fun getLatestDeals(): List<Deal> {
-        var doc = Jsoup.connect(baseURL).get()
+    fun getLatestDealsFromHTML(html: String) : List<Deal>{
+        var doc = Jsoup.parse(html)
         var url = getLatestDealsURL(doc)
         var elements = getDealsTables(url)
         return getDealsFromTables(elements)
     }
 
-    fun getDeals(url : String): List<Deal> {
+    fun getLatestDealsFromURL(baseUrl: String): List<Deal> {
+        var doc = Jsoup.connect(baseUrl).get()
+        var url = getLatestDealsURL(doc)
         var elements = getDealsTables(url)
         return getDealsFromTables(elements)
     }

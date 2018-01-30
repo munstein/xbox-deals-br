@@ -11,8 +11,9 @@ class DealsMachineTest {
 
     @Test
     fun testGetDeals(){
+        val url: String = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
         var dealsMachine = DealsMachine()
-        Assert.assertEquals(true, dealsMachine.getLatestDeals().isNotEmpty())
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isNotEmpty())
     }
 
 }

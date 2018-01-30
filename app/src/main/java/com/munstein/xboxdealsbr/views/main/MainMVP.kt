@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr.views.main
 
 import com.munstein.xboxdealsbr.model.Deal
+import retrofit2.Callback
 
 /**
  * Created by @Munstein on 21/01/2018. --22:12
@@ -8,12 +9,13 @@ import com.munstein.xboxdealsbr.model.Deal
 interface MainMVP {
 
     interface model{
-        fun getDeals() : List<Deal>
+        fun getHTML(call : Callback<String>) : String
     }
 
     interface view{
         fun showDialog()
         fun hideDialog()
+        fun showMessage(msg : String)
         fun loadDeals(deals : List<Deal>)
     }
 
