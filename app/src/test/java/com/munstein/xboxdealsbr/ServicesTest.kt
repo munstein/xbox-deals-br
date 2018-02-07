@@ -10,7 +10,7 @@ import org.junit.Test
 class ServicesTest {
 
     @Test
-    fun testDealsService(){
+    fun testBasicOkHTTP(){
         var client = OkHttpClient()
         var request = Request.Builder().url("https://github.com/square/okhttp/wiki/Recipes").build()
         val response = client.newCall(request).execute()

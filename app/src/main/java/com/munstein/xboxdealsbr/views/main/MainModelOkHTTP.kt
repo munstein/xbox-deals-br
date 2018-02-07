@@ -7,9 +7,9 @@ import okhttp3.Request
 /**
  * Created by @Munstein on 30/01/2018. --17:35
  */
-class MainModelOkHTTP {
+class MainModelOkHTTP : MainMVP.model{
 
-    fun getHTML(callback : Callback) {
+    override fun getHTML(callback : Callback){
         var client = OkHttpClient()
         var request = Request.Builder().url("https://github.com/square/okhttp/wiki/Recipes").build()
         val response = client.newCall(request).enqueue(callback)
