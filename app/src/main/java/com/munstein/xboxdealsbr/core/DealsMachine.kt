@@ -41,15 +41,33 @@ class DealsMachine {
     }
 
     private fun getDealsFromTables(tables : Elements) : List<Deal>{
-        var tableContents = tables[0].select("tr")
         var deals = ArrayList<Deal>()
-        for (i in 2 .. tableContents.size-1){
-            var tds = tableContents[i].select("td")
-            var game = tds[0].text()
-            var type = tds[1].text()
-            var discount = tds[2].text()
-            var value = tds[3].text()
-            deals.add(Deal(game,type,discount,value))
+        for (i in 0 .. tables.size - 1) {
+            var tableContents = tables[i].select("tr")
+            for (i in 2..tableContents.size - 1) {
+                var tds = tableContents[i].select("td")
+                var game = tds[0].text()
+                var type = tds[1].text()
+                var discount = tds[2].text()
+                var value = tds[3].text()
+                deals.add(Deal(game, type, discount, value))
+            }
+        }
+        return deals
+    }
+
+    private fun getDealsFromTables2(tables : Elements) : List<Deal>{
+        var deals = ArrayList<Deal>()
+        for (i in 0 .. tables.size - 1) {
+            var tableContents = tables[i].select("tr")
+            for (i in 2..tableContents.size - 1) {
+                var tds = tableContents[i].select("td")
+                var game = tds[0].text()
+                var type = tds[1].text()
+                var discount = tds[2].text()
+                var value = tds[3].text()
+                deals.add(Deal(game, type, discount, value))
+            }
         }
         return deals
     }
