@@ -1,7 +1,7 @@
 package com.munstein.xboxdealsbr.views.main
 
 import com.munstein.xboxdealsbr.model.Deal
-import retrofit2.Callback
+import okhttp3.Callback
 
 /**
  * Created by @Munstein on 21/01/2018. --22:12
@@ -9,7 +9,7 @@ import retrofit2.Callback
 interface MainMVP {
 
     interface model{
-        fun getHTML(call : Callback<String>) : String
+        fun getHTML(call : Callback) : String
     }
 
     interface view{

@@ -1,9 +1,13 @@
 package com.munstein.xboxdealsbr.views.main
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.base.BaseActivity
 import com.munstein.xboxdealsbr.model.Deal
+import okhttp3.*
+import java.io.IOException
 
 class MainActivity : BaseActivity(), MainMVP.view {
 
