@@ -37,6 +37,7 @@ class MainActivity : BaseActivity(), MainMVP.view {
                 .progress(true, 0)
                 .build()
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        presenter.displayDeals()
     }
 
     override fun showDialog() {
@@ -44,14 +45,17 @@ class MainActivity : BaseActivity(), MainMVP.view {
     }
 
     override fun hideDialog() {
-        progressDialog.hide()
+        this.runOnUiThread {
+            progressDialog.hide()
+        }
     }
 
     override fun loadDeals(deals : List<Deal>) {
         dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
-
-        main_deals_recycler_view.adapter = dealsAdapter
-        main_deals_recycler_view.layoutManager = layoutManager
+        this.runOnUiThread {
+            main_deals_recycler_view.adapter = dealsAdapter
+            main_deals_recycler_view.layoutManager = layoutManager
+        }
     }
 
     override fun showMessage(msg: String) {

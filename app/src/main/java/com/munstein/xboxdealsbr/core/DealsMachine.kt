@@ -8,6 +8,7 @@ import org.jsoup.select.Elements
 /**
  * Created by @Munstein on 21/01/2018. --22:53
  */
+
 class DealsMachine {
 
     fun getLatestDealsFromHTML(html: String) : List<Deal>{

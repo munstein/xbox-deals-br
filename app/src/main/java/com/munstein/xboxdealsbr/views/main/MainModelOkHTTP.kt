@@ -9,9 +9,11 @@ import okhttp3.Request
  */
 class MainModelOkHTTP : MainMVP.model{
 
+    private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
+
     override fun getHTML(callback : Callback){
         var client = OkHttpClient()
-        var request = Request.Builder().url("https://github.com/square/okhttp/wiki/Recipes").build()
+        var request = Request.Builder().url(url).build()
         val response = client.newCall(request).enqueue(callback)
     }
 
