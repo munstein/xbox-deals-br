@@ -11,7 +11,6 @@ import java.io.IOException
  */
 class MainPresenter : MainMVP.presenter, Callback {
 
-
     val view : MainMVP.view
     val model : MainMVP.model
     val dealsMachine : DealsMachine
@@ -27,7 +26,6 @@ class MainPresenter : MainMVP.presenter, Callback {
         model.getHTML(this)
     }
 
-
     override fun onResponse(call: Call?, response: Response?) {
         var html = response!!.body()!!.string()
         var dealsList = dealsMachine.getLatestDealsFromHTML(html!!)
@@ -36,7 +34,7 @@ class MainPresenter : MainMVP.presenter, Callback {
     }
 
     override fun onFailure(call: Call?, e: IOException?) {
-        view.showMessage("Erro!")
+        view.showMessage("Error!")
     }
 
 }
