@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr.views.main
 
-import com.munstein.xboxdealsbr.core.DealsMachine
+import com.munstein.xboxdealsbr.core.DealsMachineJsoup
+import com.munstein.xboxdealsbr.core.IDealsMachine
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -13,12 +14,12 @@ class MainPresenter : MainMVP.presenter, Callback {
 
     val view : MainMVP.view
     val model : MainMVP.model
-    val dealsMachine : DealsMachine
+    val dealsMachine : IDealsMachine
 
     constructor(model: MainMVP.model, view: MainMVP.view) {
         this.model = model
         this.view = view
-        dealsMachine = DealsMachine()
+        dealsMachine = DealsMachineJsoup()
     }
 
     override fun displayDeals() {

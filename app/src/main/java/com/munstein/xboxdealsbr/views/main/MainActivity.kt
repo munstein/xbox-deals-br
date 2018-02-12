@@ -1,20 +1,14 @@
 package com.munstein.xboxdealsbr.views.main
 
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
 import com.munstein.xboxdealsbr.base.BaseActivity
 import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.*
-import java.io.IOException
-import android.support.v7.widget.DividerItemDecoration
-
 
 
 class MainActivity : BaseActivity(), MainMVP.view {

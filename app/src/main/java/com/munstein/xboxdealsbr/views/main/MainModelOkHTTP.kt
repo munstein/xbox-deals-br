@@ -14,7 +14,7 @@ class MainModelOkHTTP : MainMVP.model{
     override fun getHTML(callback : Callback){
         var client = OkHttpClient()
         var request = Request.Builder().url(url).build()
-        val response = client.newCall(request).enqueue(callback)
+        client.newCall(request).enqueue(callback)
     }
 
 }

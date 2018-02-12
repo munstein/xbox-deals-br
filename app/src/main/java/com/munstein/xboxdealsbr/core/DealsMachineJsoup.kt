@@ -9,16 +9,16 @@ import org.jsoup.select.Elements
  * Created by @Munstein on 21/01/2018. --22:53
  */
 
-class DealsMachine {
+class DealsMachineJsoup : IDealsMachine {
 
-    fun getLatestDealsFromHTML(html: String) : List<Deal>{
+    override fun getLatestDealsFromHTML(html: String) : List<Deal>{
         var doc = Jsoup.parse(html)
         var url = getLatestDealsURL(doc)
         var elements = getDealsTables(url)
         return getDealsFromTables(elements)
     }
 
-    fun getLatestDealsFromURL(baseUrl: String): List<Deal> {
+    override fun getLatestDealsFromURL(baseUrl: String): List<Deal> {
         var doc = Jsoup.connect(baseUrl).get()
         var url = getLatestDealsURL(doc)
         var elements = getDealsTables(url)
