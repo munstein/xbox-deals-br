@@ -13,12 +13,15 @@ import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
+import android.support.v7.widget.DividerItemDecoration
+
+
 
 class MainActivity : BaseActivity(), MainMVP.view {
 
     private lateinit var progressDialog : MaterialDialog
     private lateinit var dealsAdapter : DealsAdapter
-    private lateinit var layoutManager : RecyclerView.LayoutManager
+    private lateinit var layoutManager : LinearLayoutManager
     private val presenter : MainMVP.presenter = MainPresenter(MainModelOkHTTP(),this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,8 @@ class MainActivity : BaseActivity(), MainMVP.view {
 
     override fun loadDeals(deals : List<Deal>) {
         dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
+        val dividerItemDecoration = DividerItemDecoration(main_deals_recycler_view.context,
+                layoutManager.orientation)
         this.runOnUiThread {
             main_deals_recycler_view.adapter = dealsAdapter
             main_deals_recycler_view.layoutManager = layoutManager
@@ -59,7 +64,9 @@ class MainActivity : BaseActivity(), MainMVP.view {
     }
 
     override fun showMessage(msg: String) {
-        showToast(msg)
+        this.runOnUiThread{
+            showToast(msg)
+        }
     }
 
 }

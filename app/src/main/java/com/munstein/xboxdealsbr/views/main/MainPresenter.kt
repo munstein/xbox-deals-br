@@ -34,6 +34,7 @@ class MainPresenter : MainMVP.presenter, Callback {
     }
 
     override fun onFailure(call: Call?, e: IOException?) {
+        view.hideDialog()
         view.showMessage("Error!")
     }
 
