@@ -1,7 +1,9 @@
 package com.munstein.xboxdealsbr
 
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
+import com.munstein.xboxdealsbr.model.Deal
 import junit.framework.Assert
+import org.jsoup.Jsoup
 import org.junit.Test
 
 /**
@@ -15,5 +17,6 @@ class DealsMachineJsoupTest {
         var dealsMachine = DealsMachineJsoup()
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isNotEmpty())
     }
+
 
 }

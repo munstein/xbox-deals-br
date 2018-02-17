@@ -47,18 +47,20 @@ class DealsMachineJsoup : IDealsMachine {
     }
 
     private fun getDealsFromTables(tables : Elements) : List<Deal>{
+        var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
+        var dealsPageDocument = Jsoup.connect(url).get()
+        var div = dealsPageDocument.select(".entry-content")
+        var tables = div.select("table")
+        var tableContents = tables[0].select("tr")
         var deals = ArrayList<Deal>()
-        for (i in 0 .. tables.size - 1) {
-            var tableContents = tables[i].select("tr")
-            if(tableContents[0].select("td").text().contains("One"))
-            for (i in 2..tableContents.size - 1) {
-                var tds = tableContents[i].select("td")
-                var game = tds[0].text()
-                var type = tds[1].text()
-                var discount = tds[2].text()
-                var value = tds[3].text()
-                deals.add(Deal(game, type, discount, value))
-            }
+        for (i in 2 .. tableContents.size-1){
+            var tds = tableContents[i].select("td")
+            var game = tds[0].text()
+            var type = tds[1].text()
+            var url = tds[0].select("a").attr("href")
+            var discount = tds[2].text()
+            var value = tds[3].text()
+            deals.add(Deal(game,type,discount,value, url))
         }
         return deals
     }
