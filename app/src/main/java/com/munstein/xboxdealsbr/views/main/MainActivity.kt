@@ -54,6 +54,7 @@ class MainActivity : BaseActivity(), MainMVP.view {
         this.runOnUiThread {
             main_deals_recycler_view.adapter = dealsAdapter
             main_deals_recycler_view.layoutManager = layoutManager
+            main_deals_recycler_view.addItemDecoration(dividerItemDecoration)
         }
     }
 
