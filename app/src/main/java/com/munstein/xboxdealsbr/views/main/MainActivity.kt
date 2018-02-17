@@ -63,4 +63,10 @@ class MainActivity : BaseActivity(), MainMVP.view {
         }
     }
 
+    override fun loadTitle(title: String) {
+        this.runOnUiThread{
+            main_txt_title.text = title
+        }
+    }
+
 }

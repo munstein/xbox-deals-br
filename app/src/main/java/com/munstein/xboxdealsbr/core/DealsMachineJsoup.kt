@@ -25,6 +25,12 @@ class DealsMachineJsoup : IDealsMachine {
         return getDealsFromTables(elements)
     }
 
+    override fun getTitle(html: String): String {
+        var doc = Jsoup.parse(html)
+        var title = doc.select(".post-title")
+        return title[0].text()
+    }
+
     private fun getLatestDealsURL(doc : Document) : String {
         var elements = doc.select("article" )
         var h2 = elements.get(0).select(".title")
@@ -56,5 +62,7 @@ class DealsMachineJsoup : IDealsMachine {
         }
         return deals
     }
+
+
 
 }

@@ -8,4 +8,5 @@ import com.munstein.xboxdealsbr.model.Deal
 interface IDealsMachine {
     fun getLatestDealsFromHTML(html: String) : List<Deal>
     fun getLatestDealsFromURL(baseUrl: String): List<Deal>
+    fun getTitle(html: String) : String
 }

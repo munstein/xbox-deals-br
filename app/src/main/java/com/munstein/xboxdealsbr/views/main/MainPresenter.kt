@@ -30,7 +30,9 @@ class MainPresenter : MainMVP.presenter, Callback {
     override fun onResponse(call: Call?, response: Response?) {
         var html = response!!.body()!!.string()
         var dealsList = dealsMachine.getLatestDealsFromHTML(html!!)
+        var title = dealsMachine.getTitle(html)
         view.loadDeals(dealsList)
+        view.loadTitle(title)
         view.hideDialog()
     }
 

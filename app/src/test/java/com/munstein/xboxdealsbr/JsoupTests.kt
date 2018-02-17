@@ -68,4 +68,12 @@ class JsoupTests {
         Assert.assertEquals(deals.size, tableContents.size - 2)
     }
 
+    @Test
+    fun getTitleTest(){
+        var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
+        var dealsPageDocument = Jsoup.connect(url).get()
+        var title = dealsPageDocument.select(".post-title").text()
+        Assert.assertEquals("Deals with Gold e Ofertas Especiais – 16 a 22/01", title)
+    }
+
 }
