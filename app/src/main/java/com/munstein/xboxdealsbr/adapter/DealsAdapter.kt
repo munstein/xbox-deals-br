@@ -33,8 +33,9 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DealsHolder {
-        return DealsHolder(LayoutInflater.from(parent!!.context)
+        var view = DealsHolder(LayoutInflater.from(parent!!.context)
                 .inflate(R.layout.holder_deal, parent, false))
+        return view
     }
 
     class DealsHolder(itemView: View) :  RecyclerView.ViewHolder(itemView) {
@@ -43,4 +44,5 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
         val txtDiscount : TextView = itemView.findViewById(R.id.deal_txt_discount)
         val txtValue : TextView = itemView.findViewById(R.id.deal_txt_value)
     }
+
 }
