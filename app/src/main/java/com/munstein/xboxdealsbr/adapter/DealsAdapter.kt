@@ -1,5 +1,7 @@
 package com.munstein.xboxdealsbr.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +28,10 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
         holder!!.txtType.setText(deal.type)
         holder!!.txtDiscount.setText(deal.discount)
         holder!!.txtValue.setText(deal.value)
+        holder!!.txtGame.setOnClickListener(View.OnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(deal.url))
+            holder!!.txtGame.context.startActivity(browserIntent)
+        })
     }
 
     override fun getItemCount(): Int {
