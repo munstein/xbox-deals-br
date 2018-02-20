@@ -18,5 +18,18 @@ class DealsMachineJsoupTest {
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isNotEmpty())
     }
 
+    @Test
+    fun testGetDealsPassingEmptyHTML(){
+        val html: String = ""
+        var dealsMachine = DealsMachineJsoup()
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
+    }
+
+    @Test
+    fun testGetDealsPassingEmptyURL(){
+        val url: String = ""
+        var dealsMachine = DealsMachineJsoup()
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
+    }
 
 }

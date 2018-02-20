@@ -12,17 +12,25 @@ import org.jsoup.select.Elements
 class DealsMachineJsoup : IDealsMachine {
 
     override fun getLatestDealsFromHTML(html: String) : List<Deal>{
-        var doc = Jsoup.parse(html)
-        var url = getLatestDealsURL(doc)
-        var elements = getDealsTables(url)
-        return getDealsFromTables(elements)
+        if(html.length>0) {
+            var doc = Jsoup.parse(html)
+            var url = getLatestDealsURL(doc)
+            var elements = getDealsTables(url)
+            return getDealsFromTables(elements)
+        }else{
+            return ArrayList<Deal>()
+        }
     }
 
     override fun getLatestDealsFromURL(baseUrl: String): List<Deal> {
-        var doc = Jsoup.connect(baseUrl).get()
-        var url = getLatestDealsURL(doc)
-        var elements = getDealsTables(url)
-        return getDealsFromTables(elements)
+        if(baseUrl.length >0) {
+            var doc = Jsoup.connect(baseUrl).get()
+            var url = getLatestDealsURL(doc)
+            var elements = getDealsTables(url)
+            return getDealsFromTables(elements)
+        }else{
+            return ArrayList<Deal>()
+        }
     }
 
     override fun getTitle(html: String): String {

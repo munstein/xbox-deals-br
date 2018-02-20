@@ -63,7 +63,7 @@ class JsoupTests {
             var type = tds[1].text()
             var discount = tds[2].text()
             var value = tds[3].text()
-            deals.add(Deal(game,type,discount,value))
+            deals.add(Deal(game,type,discount,value, ""))
         }
         Assert.assertEquals(deals.size, tableContents.size - 2)
     }
