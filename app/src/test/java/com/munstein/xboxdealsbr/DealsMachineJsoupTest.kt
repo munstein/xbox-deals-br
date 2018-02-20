@@ -32,4 +32,25 @@ class DealsMachineJsoupTest {
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
     }
 
+    @Test
+    fun testGetDealsPassingInvalidURL(){
+        val url: String = "not a valid url"
+        var dealsMachine = DealsMachineJsoup()
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
+    }
+
+    @Test
+    fun testGetDealsPassingSenselessURL(){
+        val url: String = "http://google.com"
+        var dealsMachine = DealsMachineJsoup()
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
+    }
+
+    @Test
+    fun testGetDealsPassingCorruptedHTML(){
+        val html: String = "this is not a valid html"
+        var dealsMachine = DealsMachineJsoup()
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
+    }
+    
 }
