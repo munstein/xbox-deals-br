@@ -52,5 +52,12 @@ class DealsMachineJsoupTest {
         var dealsMachine = DealsMachineJsoup()
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
     }
-    
+
+    @Test
+    fun testGetDealsPassingIncompletedHTML(){
+        val html: String = "<html></html>"
+        var dealsMachine = DealsMachineJsoup()
+        Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
+    }
+
 }
