@@ -9,19 +9,19 @@ import okhttp3.Callback
 
 interface MainMVP {
 
-    interface model{
-        fun getHTML(call : Callback)
+    interface model {
+        fun getHTML(call: Callback)
     }
 
-    interface view{
+    interface view {
         fun showDialog()
         fun hideDialog()
-        fun showMessage(msg : String)
-        fun loadDeals(deals : List<Deal>)
-        fun loadTitle(title : String)
+        fun showMessage(msg: String)
+        fun loadDeals(deals: List<Deal>)
+        fun loadTitle(title: String)
     }
 
-    interface presenter{
+    interface presenter {
         fun displayDeals()
     }
 }

@@ -11,24 +11,24 @@ import org.jsoup.select.Elements
 
 class DealsMachineJsoup : IDealsMachine {
 
-    override fun getLatestDealsFromHTML(html: String) : List<Deal>{
-        if(html.length>0) {
+    override fun getLatestDealsFromHTML(html: String): List<Deal> {
+        if (html.length > 0) {
             var doc = Jsoup.parse(html)
             var url = getLatestDealsURL(doc)
             var elements = getDealsTables(url)
             return getDealsFromTables(elements)
-        }else{
+        } else {
             return ArrayList<Deal>()
         }
     }
 
     override fun getLatestDealsFromURL(baseUrl: String): List<Deal> {
-        try{
+        try {
             var doc = Jsoup.connect(baseUrl).get()
             var url = getLatestDealsURL(doc)
             var elements = getDealsTables(url)
             return getDealsFromTables(elements)
-        }catch (exception : Exception){
+        } catch (exception: Exception) {
             return ArrayList<Deal>()
         }
     }
@@ -38,36 +38,36 @@ class DealsMachineJsoup : IDealsMachine {
             var doc = Jsoup.parse(html)
             var title = doc.select(".post-title")
             return title[0].text()
-        }catch (exception : Exception){
+        } catch (exception: Exception) {
             return ""
         }
     }
 
-    private fun getLatestDealsURL(doc : Document) : String {
+    private fun getLatestDealsURL(doc: Document): String {
         try {
             var elements = doc.select("article")
             var h2 = elements.get(0).select(".title")
             var a = h2.get(0).select("a")
             var url = a.attr("href")
             return url
-        } catch (exception : Exception){
-            return  ""
+        } catch (exception: Exception) {
+            return ""
         }
     }
 
-    private fun getDealsTables(url : String) : Elements{
-        if(url.length > 0) {
+    private fun getDealsTables(url: String): Elements {
+        if (url.length > 0) {
             var dealsPageDocument = Jsoup.connect(url).get()
             var div = dealsPageDocument.select(".entry-content")
             var tables = div.select("table")
             return tables
-        }else{
+        } else {
             return Elements()
         }
     }
 
-    private fun getDealsFromTables(tables : Elements) : List<Deal>{
-        if(tables.size > 0) {
+    private fun getDealsFromTables(tables: Elements): List<Deal> {
+        if (tables.size > 0) {
             var tableContents = tables[0].select("tr")
             var deals = ArrayList<Deal>()
             for (i in 2..tableContents.size - 1) {
@@ -80,11 +80,10 @@ class DealsMachineJsoup : IDealsMachine {
                 deals.add(Deal(game, type, discount, value, url))
             }
             return deals
-        }else{
+        } else {
             return ArrayList<Deal>()
         }
     }
-
 
 
 }

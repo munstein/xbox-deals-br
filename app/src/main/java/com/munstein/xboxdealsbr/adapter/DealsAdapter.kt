@@ -16,9 +16,9 @@ import com.munstein.xboxdealsbr.model.Deal
 
 class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
 
-    private var deals : ArrayList<Deal>
+    private var deals: ArrayList<Deal>
 
-    constructor(deals : ArrayList<Deal>){
+    constructor(deals: ArrayList<Deal>) {
         this.deals = deals
     }
 
@@ -44,11 +44,11 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
         return view
     }
 
-    class DealsHolder(itemView: View) :  RecyclerView.ViewHolder(itemView) {
-        val txtGame : TextView = itemView.findViewById(R.id.deal_txt_title)
-        val txtType : TextView = itemView.findViewById(R.id.deal_txt_type)
-        val txtDiscount : TextView = itemView.findViewById(R.id.deal_txt_discount)
-        val txtValue : TextView = itemView.findViewById(R.id.deal_txt_value)
+    class DealsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val txtGame: TextView = itemView.findViewById(R.id.deal_txt_title)
+        val txtType: TextView = itemView.findViewById(R.id.deal_txt_type)
+        val txtDiscount: TextView = itemView.findViewById(R.id.deal_txt_discount)
+        val txtValue: TextView = itemView.findViewById(R.id.deal_txt_value)
     }
 
 }

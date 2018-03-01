@@ -12,9 +12,9 @@ import java.io.IOException
  */
 class MainPresenter : MainMVP.presenter, Callback {
 
-    val view : MainMVP.view
-    val model : MainMVP.model
-    val dealsMachine : IDealsMachine
+    val view: MainMVP.view
+    val model: MainMVP.model
+    val dealsMachine: IDealsMachine
 
     constructor(model: MainMVP.model, view: MainMVP.view) {
         this.model = model

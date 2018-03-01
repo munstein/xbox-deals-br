@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainMVP.view {
 
-    private lateinit var progressDialog : MaterialDialog
-    private lateinit var dealsAdapter : DealsAdapter
-    private lateinit var layoutManager : LinearLayoutManager
-    private val presenter : MainMVP.presenter = MainPresenter(MainModelOkHTTP(),this)
+    private lateinit var progressDialog: MaterialDialog
+    private lateinit var dealsAdapter: DealsAdapter
+    private lateinit var layoutManager: LinearLayoutManager
+    private val presenter: MainMVP.presenter = MainPresenter(MainModelOkHTTP(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class MainActivity : BaseActivity(), MainMVP.view {
         super.onPostResume()
     }
 
-    private fun init(){
+    private fun init() {
         progressDialog = MaterialDialog.Builder(this)
                 .content(R.string.dialog_loading)
                 .progress(true, 0)
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity(), MainMVP.view {
         }
     }
 
-    override fun loadDeals(deals : List<Deal>) {
+    override fun loadDeals(deals: List<Deal>) {
         dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
         val dividerItemDecoration = DividerItemDecoration(main_deals_recycler_view.context,
                 layoutManager.orientation)
@@ -59,13 +59,13 @@ class MainActivity : BaseActivity(), MainMVP.view {
     }
 
     override fun showMessage(msg: String) {
-        this.runOnUiThread{
+        this.runOnUiThread {
             showToast(msg)
         }
     }
 
     override fun loadTitle(title: String) {
-        this.runOnUiThread{
+        this.runOnUiThread {
             main_txt_title.text = title
         }
     }
