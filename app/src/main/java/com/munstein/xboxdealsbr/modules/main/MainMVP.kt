@@ -1,4 +1,4 @@
-package com.munstein.xboxdealsbr.views.main
+package com.munstein.xboxdealsbr.modules.main
 
 import com.munstein.xboxdealsbr.model.Deal
 import okhttp3.Callback

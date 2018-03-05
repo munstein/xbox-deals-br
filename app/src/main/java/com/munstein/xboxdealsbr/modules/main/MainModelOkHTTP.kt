@@ -1,4 +1,4 @@
-package com.munstein.xboxdealsbr.views.main
+package com.munstein.xboxdealsbr.modules.main
 
 import okhttp3.Callback
 import okhttp3.OkHttpClient

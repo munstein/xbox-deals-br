@@ -1,4 +1,4 @@
-package com.munstein.xboxdealsbr.views.main
+package com.munstein.xboxdealsbr.modules.main
 
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import com.munstein.xboxdealsbr.core.IDealsMachine

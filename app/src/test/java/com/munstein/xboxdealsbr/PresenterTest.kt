@@ -1,12 +1,9 @@
 package com.munstein.xboxdealsbr
 
-import com.munstein.xboxdealsbr.views.main.MainMVP
+import com.munstein.xboxdealsbr.modules.main.MainMVP
 import org.junit.Rule
-import org.junit.Test
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnit
-import org.mockito.junit.MockitoRule
-
 
 
 /**

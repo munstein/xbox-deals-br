@@ -1,4 +1,4 @@
-package com.munstein.xboxdealsbr.views.main
+package com.munstein.xboxdealsbr.modules.main
 
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
