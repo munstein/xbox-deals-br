@@ -1,6 +1,6 @@
 package com.munstein.xboxdealsbr
 
-import com.munstein.xboxdealsbr.modules.main.MainMVP
+import com.munstein.xboxdealsbr.app.main.MainMVP
 import org.junit.Before
 import org.junit.Rule
 import org.mockito.Mock
