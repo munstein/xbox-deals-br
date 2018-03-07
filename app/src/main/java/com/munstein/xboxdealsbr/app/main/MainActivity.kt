@@ -9,6 +9,7 @@ import com.munstein.xboxdealsbr.adapter.DealsAdapter
 import com.munstein.xboxdealsbr.base.BaseActivity
 import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 
 class MainActivity : BaseActivity(), MainMVP.view {
@@ -16,7 +17,8 @@ class MainActivity : BaseActivity(), MainMVP.view {
     private lateinit var progressDialog: MaterialDialog
     private lateinit var dealsAdapter: DealsAdapter
     private lateinit var layoutManager: LinearLayoutManager
-    private val presenter: MainMVP.presenter = MainPresenter(MainModelOkHTTP(), this)
+
+    private var presenter: MainMVP.presenter = MainPresenter(MainModelOkHTTP(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
