@@ -15,9 +15,9 @@ class MainPresenter : MainMVP.presenter, Callback {
     private val model: MainMVP.model
     private val dealsMachine: IDealsMachine
 
-    constructor(model : MainMVP.model){
+    constructor(model : MainMVP.model, dealsMachineJsoup: IDealsMachine){
         this.model = model
-        dealsMachine = DealsMachineJsoup()
+        this.dealsMachine = dealsMachineJsoup
     }
 
 
