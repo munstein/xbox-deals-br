@@ -14,8 +14,8 @@ import dagger.Provides
 class MainModule {
 
     @Provides
-    fun provideMainPresenter(model : MainMVP.model, view : MainMVP.view) : MainMVP.presenter{
-        return MainPresenter(model, view)
+    fun provideMainPresenter(model : MainMVP.model) : MainMVP.presenter{
+        return MainPresenter(model)
     }
 
     @Provides

@@ -11,16 +11,15 @@ import java.io.IOException
  * Created by @Munstein on 30/01/2018. --17:24
  */
 class MainPresenter : MainMVP.presenter, Callback {
+    private lateinit var view: MainMVP.view
+    private val model: MainMVP.model
+    private val dealsMachine: IDealsMachine
 
-    val view: MainMVP.view
-    val model: MainMVP.model
-    val dealsMachine: IDealsMachine
-
-    constructor(model: MainMVP.model, view: MainMVP.view) {
+    constructor(model : MainMVP.model){
         this.model = model
-        this.view = view
         dealsMachine = DealsMachineJsoup()
     }
+
 
     override fun displayDeals() {
         view.showDialog()
@@ -39,6 +38,10 @@ class MainPresenter : MainMVP.presenter, Callback {
     override fun onFailure(call: Call?, e: IOException?) {
         view.hideDialog()
         view.showMessage("Error!")
+    }
+
+    override fun setView(view: MainMVP.view) {
+        this.view = view
     }
 
 }

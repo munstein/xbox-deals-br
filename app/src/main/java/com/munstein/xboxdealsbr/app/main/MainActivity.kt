@@ -7,6 +7,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
 import com.munstein.xboxdealsbr.base.BaseActivity
+import com.munstein.xboxdealsbr.base.BaseApp
 import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -18,11 +19,14 @@ class MainActivity : BaseActivity(), MainMVP.view {
     private lateinit var dealsAdapter: DealsAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
-    private var presenter: MainMVP.presenter = MainPresenter(MainModelOkHTTP(), this)
+    @Inject
+    lateinit var presenter: MainMVP.presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        (application as BaseApp).getComponent().inject(this)
+        presenter.setView(this)
         init()
     }
 
