@@ -9,7 +9,7 @@ import org.jsoup.select.Elements
  * Created by @Munstein on 21/01/2018. --22:53
  */
 
-class DealsMachineJsoup : IDealsMachine {
+open class DealsMachineJsoup : IDealsMachine {
 
     override fun getLatestDealsFromHTML(html: String): List<Deal> {
         if (html.length > 0) {

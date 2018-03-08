@@ -3,11 +3,14 @@ package com.munstein.xboxdealsbr
 import com.munstein.xboxdealsbr.app.main.MainMVP
 import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
+import com.munstein.xboxdealsbr.model.Deal
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnit
 
@@ -25,6 +28,9 @@ class PresenterTest{
     @Mock
     lateinit var modelMock: MainMVP.model
 
+    @Mock
+    lateinit var dealsMock : DealsMachineJsoup
+
     @Rule @JvmField
     val mockitoRule = MockitoJUnit.rule()
 
@@ -32,7 +38,8 @@ class PresenterTest{
     fun setup(){
         modelMock = mock(MainMVP.model::class.java)
         viewMock = mock(MainMVP.view::class.java)
-        presenter = MainPresenter(modelMock, DealsMachineJsoup())
+        dealsMock = mock(DealsMachineJsoup::class.java)
+        presenter = MainPresenter(modelMock, dealsMock)
         presenter.setView(viewMock)
     }
 
@@ -44,13 +51,11 @@ class PresenterTest{
     }
 
     @Test
-    fun shouldGetHtml(){
-        `when`(modelMock!!.getHTML("")).thenReturn(Observable.just("world"))
+    fun shouldShowErrorMsg(){
+        `when`(modelMock!!.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
+                .thenReturn(Observable.error(Exception("error")))
         presenter.displayDeals()
-        verify(modelMock, times(1)).getHTML("")
+        verify(viewMock, times(1)).showMessage(ArgumentMatchers.anyString())
     }
-
-
-
 
 }
