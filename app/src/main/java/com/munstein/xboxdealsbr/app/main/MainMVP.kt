@@ -1,7 +1,9 @@
 package com.munstein.xboxdealsbr.app.main
 
 import com.munstein.xboxdealsbr.model.Deal
+import io.reactivex.Observable
 import okhttp3.Callback
+import okhttp3.Response
 
 /**
  * Created by @Munstein on 21/01/2018. --22:12
@@ -10,7 +12,7 @@ import okhttp3.Callback
 interface MainMVP {
 
     interface model {
-        fun getHTML(call: Callback)
+        fun getHTML() : Observable<String>
     }
 
     interface view {

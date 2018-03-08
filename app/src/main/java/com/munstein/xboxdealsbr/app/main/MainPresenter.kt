@@ -2,6 +2,8 @@ package com.munstein.xboxdealsbr.app.main
 
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import com.munstein.xboxdealsbr.core.IDealsMachine
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -19,10 +21,23 @@ class MainPresenter : MainMVP.presenter, Callback {
         this.model = model
         this.dealsMachine = dealsMachineJsoup
     }
-    
+
     override fun displayDeals() {
         view.showDialog()
-        model.getHTML(this)
+        model.getHTML()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .subscribe({
+                    var html = it
+                    var dealsList = dealsMachine.getLatestDealsFromHTML(html!!)
+                    var title = dealsMachine.getTitle(html)
+                    view.loadDeals(dealsList)
+                    view.loadTitle(title)
+                    view.hideDialog()
+                }, {
+                    view.hideDialog()
+                    view.showMessage("Error!")
+                })
     }
 
     override fun onResponse(call: Call?, response: Response?) {
