@@ -8,15 +8,18 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
+import org.reactivestreams.Subscription
 import java.io.IOException
 
 /**
  * Created by @Munstein on 30/01/2018. --17:24
  */
 class MainPresenter : MainMVP.presenter{
+
     private lateinit var view: MainMVP.view
     private val model: MainMVP.model
     private val dealsMachine: IDealsMachine
+    private lateinit var disposable: Disposable
 
     constructor(model : MainMVP.model, dealsMachineJsoup: IDealsMachine){
         this.model = model
@@ -25,7 +28,7 @@ class MainPresenter : MainMVP.presenter{
 
     override fun displayDeals() {
         view.showDialog()
-        model.getHTML()
+        disposable = model.getHTML()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
                 .subscribe({
@@ -43,6 +46,11 @@ class MainPresenter : MainMVP.presenter{
 
     override fun setView(view: MainMVP.view) {
         this.view = view
+    }
+
+    override fun onPause() {
+        if(!disposable.isDisposed)
+            disposable.dispose()
     }
 
 }
