@@ -10,9 +10,7 @@ import okhttp3.Response
  */
 class MainModelOkHTTP : MainMVP.model {
 
-    private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
-
-    override fun getHTML() : Observable<String> {
+    override fun getHTML(url : String) : Observable<String> {
         var client = OkHttpClient()
         var request = Request.Builder().url(url).build()
         return Observable.create({

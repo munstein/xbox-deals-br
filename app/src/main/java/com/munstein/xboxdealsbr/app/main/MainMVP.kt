@@ -12,7 +12,7 @@ import okhttp3.Response
 interface MainMVP {
 
     interface model {
-        fun getHTML() : Observable<String>
+        fun getHTML(url : String) : Observable<String>
     }
 
     interface view {

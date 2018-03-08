@@ -20,6 +20,7 @@ class MainPresenter : MainMVP.presenter{
     private val model: MainMVP.model
     private val dealsMachine: IDealsMachine
     private lateinit var disposable: Disposable
+    private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
     constructor(model : MainMVP.model, dealsMachineJsoup: IDealsMachine){
         this.model = model
@@ -28,7 +29,7 @@ class MainPresenter : MainMVP.presenter{
 
     override fun displayDeals() {
         view.showDialog()
-        disposable = model.getHTML()
+        disposable = model.getHTML(url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
                 .subscribe({

@@ -38,17 +38,19 @@ class PresenterTest{
 
     @Test
     fun shouldShowDialog(){
-        `when`(modelMock!!.getHTML()).thenReturn(Observable.just("hello"))
+        `when`(modelMock!!.getHTML("")).thenReturn(Observable.just("hello"))
         presenter.displayDeals()
         verify(viewMock, times(1)).showDialog()
     }
 
     @Test
     fun shouldGetHtml(){
-        `when`(modelMock!!.getHTML()).thenReturn(Observable.just("world"))
+        `when`(modelMock!!.getHTML("")).thenReturn(Observable.just("world"))
         presenter.displayDeals()
-        verify(modelMock, times(1)).getHTML()
+        verify(modelMock, times(1)).getHTML("")
     }
+
+
 
 
 }
