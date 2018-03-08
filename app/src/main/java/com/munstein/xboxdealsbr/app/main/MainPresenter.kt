@@ -19,8 +19,7 @@ class MainPresenter : MainMVP.presenter, Callback {
         this.model = model
         this.dealsMachine = dealsMachineJsoup
     }
-
-
+    
     override fun displayDeals() {
         view.showDialog()
         model.getHTML(this)
