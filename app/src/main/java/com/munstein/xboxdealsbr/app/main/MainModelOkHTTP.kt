@@ -15,7 +15,6 @@ class MainModelOkHTTP : MainMVP.model {
     override fun getHTML() : Observable<String> {
         var client = OkHttpClient()
         var request = Request.Builder().url(url).build()
-        //client.newCall(request).enqueue(callback)
         return Observable.create({
             try{
                 var response = client.newCall(request).execute()
