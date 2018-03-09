@@ -76,8 +76,8 @@ class MainActivity : BaseActivity(), MainMVP.view {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        presenter.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 }

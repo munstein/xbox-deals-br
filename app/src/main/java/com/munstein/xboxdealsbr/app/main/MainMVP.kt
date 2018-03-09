@@ -26,6 +26,6 @@ interface MainMVP {
     interface presenter {
         fun displayDeals()
         fun setView(view : MainMVP.view)
-        fun onPause()
+        fun onDestroy()
     }
 }
