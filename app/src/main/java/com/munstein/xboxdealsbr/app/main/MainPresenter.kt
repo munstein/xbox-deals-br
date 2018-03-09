@@ -1,20 +1,13 @@
 package com.munstein.xboxdealsbr.app.main
 
-import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import com.munstein.xboxdealsbr.core.IDealsMachine
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.Response
-import org.reactivestreams.Subscription
-import java.io.IOException
 
 /**
  * Created by @Munstein on 30/01/2018. --17:24
  */
-class MainPresenter : MainMVP.presenter{
+class MainPresenter : MainMVP.presenter {
 
     private lateinit var view: MainMVP.view
     private val model: MainMVP.model
@@ -22,7 +15,7 @@ class MainPresenter : MainMVP.presenter{
     private lateinit var disposable: Disposable
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
-    constructor(model : MainMVP.model, dealsMachineJsoup: IDealsMachine){
+    constructor(model: MainMVP.model, dealsMachineJsoup: IDealsMachine) {
         this.model = model
         this.dealsMachine = dealsMachineJsoup
     }
@@ -42,7 +35,7 @@ class MainPresenter : MainMVP.presenter{
                 }, {
                     view.hideDialog()
                     view.showMessage("Error!")
-                },{
+                }, {
                     view.hideDialog()
                 })
     }
@@ -51,8 +44,8 @@ class MainPresenter : MainMVP.presenter{
         this.view = view
     }
 
-    override fun onPause() {
-        if(!disposable.isDisposed)
+    override fun onDestroy() {
+        if (!disposable.isDisposed)
             disposable.dispose()
     }
 

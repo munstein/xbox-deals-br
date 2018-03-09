@@ -16,17 +16,17 @@ import dagger.Provides
 class MainModule {
 
     @Provides
-    fun provideMainPresenter(model : MainMVP.model, dealsMachineJsoup: IDealsMachine) : MainMVP.presenter{
+    fun provideMainPresenter(model: MainMVP.model, dealsMachineJsoup: IDealsMachine): MainMVP.presenter {
         return MainPresenter(model, dealsMachineJsoup)
     }
 
     @Provides
-    fun provideMainModel() : MainMVP.model{
+    fun provideMainModel(): MainMVP.model {
         return MainModelOkHTTP()
     }
 
     @Provides
-    fun provideDealsMachine() : IDealsMachine{
+    fun provideDealsMachine(): IDealsMachine {
         return DealsMachineJsoup()
     }
 
