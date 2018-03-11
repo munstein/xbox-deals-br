@@ -45,6 +45,7 @@ class MainPresenter : MainMVP.presenter {
     }
 
     override fun onDestroy() {
+        if(disposable != null)
         if (!disposable.isDisposed)
             disposable.dispose()
     }
