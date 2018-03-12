@@ -24,14 +24,17 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
 
     override fun onBindViewHolder(holder: DealsHolder?, position: Int) {
         var deal = deals[position]
-        holder!!.txtGame.setText(deal.game)
-        holder!!.txtType.setText(deal.type)
-        holder!!.txtDiscount.setText(deal.discount)
-        holder!!.txtValue.setText(deal.value)
-        holder!!.txtGame.setOnClickListener(View.OnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(deal.url))
-            holder!!.txtGame.context.startActivity(browserIntent)
-        })
+        with(deal){
+            holder!!.txtGame.setText(game)
+            holder!!.txtType.setText(type)
+            holder!!.txtDiscount.setText(discount)
+            holder!!.txtValue.setText(value)
+            holder!!.txtGame.setOnClickListener({
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                holder!!.txtGame.context.startActivity(browserIntent)
+            })
+        }
+
     }
 
     override fun getItemCount(): Int {
