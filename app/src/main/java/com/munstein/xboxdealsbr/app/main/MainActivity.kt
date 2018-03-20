@@ -41,6 +41,7 @@ class MainActivity : BaseActivity(), MainMVP.view {
                 .build()
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         presenter.displayDeals()
+        button.setOnClickListener({presenter.displayDeals()})
     }
 
     override fun showDialog() {

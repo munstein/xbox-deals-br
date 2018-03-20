@@ -9,6 +9,7 @@ import com.munstein.xboxdealsbr.modules.MainModule
 /**
  * Created by @Munstein on 06/03/2018. --18:32
  */
+
 class BaseApp : Application() {
 
     private lateinit var component: MainComponent
