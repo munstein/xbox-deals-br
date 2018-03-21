@@ -16,6 +16,8 @@ interface MainMVP {
     interface view {
         fun showDialog()
         fun hideDialog()
+        fun hideButton()
+        fun showButton()
         fun showMessage(msg: String)
         fun loadDeals(deals: List<Deal>)
         fun loadTitle(title: String)

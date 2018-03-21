@@ -32,9 +32,11 @@ class MainPresenter : MainMVP.presenter {
                     view.loadDeals(dealsList)
                     view.loadTitle(title)
                     view.hideDialog()
+                    view.hideButton()
                 }, {
                     view.hideDialog()
                     view.showMessage("Error!")
+                    view.showButton()
                 }, {
                     view.hideDialog()
                 })

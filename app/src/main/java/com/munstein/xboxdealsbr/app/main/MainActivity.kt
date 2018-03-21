@@ -3,6 +3,7 @@ package com.munstein.xboxdealsbr.app.main
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
@@ -41,7 +42,7 @@ class MainActivity : BaseActivity(), MainMVP.view {
                 .build()
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         presenter.displayDeals()
-        button.setOnClickListener({presenter.displayDeals()})
+        main_btn_reload.setOnClickListener({presenter.displayDeals()})
     }
 
     override fun showDialog() {
@@ -81,4 +82,13 @@ class MainActivity : BaseActivity(), MainMVP.view {
         super.onDestroy()
         presenter.onDestroy()
     }
+
+    override fun hideButton() {
+        main_btn_reload.visibility = View.GONE
+    }
+
+    override fun showButton() {
+        main_btn_reload.visibility = View.VISIBLE
+    }
+
 }
