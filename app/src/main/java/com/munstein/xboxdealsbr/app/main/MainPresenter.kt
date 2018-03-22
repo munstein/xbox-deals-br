@@ -31,14 +31,14 @@ class MainPresenter : MainMVP.presenter {
                     var title = dealsMachine.getTitle(html)
                     view.loadDeals(dealsList)
                     view.loadTitle(title)
-                    view.hideDialog()
-                    view.hideButton()
+
                 }, {
                     view.hideDialog()
                     view.showMessage("Error!")
                     view.showButton()
                 }, {
                     view.hideDialog()
+                    view.hideButton()
                 })
     }
 
