@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
+import android.graphics.Typeface
+
+
 
 /**
  * Created by @Munstein on 25/01/2018. --14:55
@@ -44,14 +47,24 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DealsHolder {
         var view = DealsHolder(LayoutInflater.from(parent!!.context)
                 .inflate(R.layout.holder_deal, parent, false))
+        var font = Typeface.createFromAsset(parent.context.getAssets(),
+                "fonts/X360.ttf")
+
+        view.txtGame.typeface = font
+        view.txtType.typeface= font
+        view.txtDiscount.typeface = font
+        view.txtValue.typeface = font
+
         return view
     }
 
     class DealsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         val txtGame: TextView = itemView.findViewById(R.id.deal_txt_title)
         val txtType: TextView = itemView.findViewById(R.id.deal_txt_type)
         val txtDiscount: TextView = itemView.findViewById(R.id.deal_txt_discount)
         val txtValue: TextView = itemView.findViewById(R.id.deal_txt_value)
+
     }
 
 }
