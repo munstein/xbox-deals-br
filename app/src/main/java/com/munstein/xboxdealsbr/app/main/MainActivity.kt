@@ -84,7 +84,9 @@ class MainActivity : BaseActivity(), MainMVP.view {
     }
 
     override fun hideButton() {
-        main_btn_reload.visibility = View.GONE
+        this.runOnUiThread {
+            main_btn_reload.visibility = View.GONE
+        }
     }
 
     override fun showButton() {
