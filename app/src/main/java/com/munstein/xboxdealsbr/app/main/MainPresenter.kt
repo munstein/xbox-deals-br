@@ -35,6 +35,7 @@ class MainPresenter : MainMVP.presenter {
                 }, {
                     view.hideDialog()
                     view.showMessage("Error!")
+                    view.showErrorTitle()
                     view.showButton()
                 }, {
                     view.hideDialog()
