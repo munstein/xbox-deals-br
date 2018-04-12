@@ -93,4 +93,8 @@ class MainActivity : BaseActivity(), MainMVP.view {
         main_btn_reload.visibility = View.VISIBLE
     }
 
+    override fun showErrorTitle() {
+        main_txt_title.text = getString(R.string.error_msg)
+    }
+
 }

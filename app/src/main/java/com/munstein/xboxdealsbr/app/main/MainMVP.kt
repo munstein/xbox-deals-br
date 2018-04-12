@@ -21,6 +21,7 @@ interface MainMVP {
         fun showMessage(msg: String)
         fun loadDeals(deals: List<Deal>)
         fun loadTitle(title: String)
+        fun showErrorTitle()
     }
 
     interface presenter {
