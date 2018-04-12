@@ -19,7 +19,6 @@ interface MainMVP {
         fun hideButton()
         fun showButton()
         fun showMessage(msg: String)
-        fun showErrorTitle()
         fun loadDeals(deals: List<Deal>)
         fun loadTitle(title: String)
     }

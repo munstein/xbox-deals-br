@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.view.Window
 import com.afollestad.materialdialogs.MaterialDialog
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
@@ -92,10 +91,6 @@ class MainActivity : BaseActivity(), MainMVP.view {
 
     override fun showButton() {
         main_btn_reload.visibility = View.VISIBLE
-    }
-
-    override fun showErrorTitle() {
-        main_txt_title.text = getString(R.string.error_msg)
     }
 
 }
