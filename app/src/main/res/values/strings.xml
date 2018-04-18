@@ -2,5 +2,6 @@
     <string name="app_name">Xbox Deals Br</string>
     <string name="dialog_loading">Loading...</string>
     <string name="reload">Reload</string>
+    <string name="error_msg">Error retrieving deals.</string>
 
 </resources>
