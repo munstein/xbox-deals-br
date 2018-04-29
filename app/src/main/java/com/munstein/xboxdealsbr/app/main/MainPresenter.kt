@@ -7,15 +7,15 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by @Munstein on 30/01/2018. --17:24
  */
-class MainPresenter : MainMVP.presenter {
+class MainPresenter : MainContract.presenter {
 
-    private lateinit var view: MainMVP.view
-    private val model: MainMVP.model
+    private lateinit var view: MainContract.view
+    private val model: MainContract.model
     private val dealsMachine: IDealsMachine
     private lateinit var disposable: Disposable
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
-    constructor(model: MainMVP.model, dealsMachineJsoup: IDealsMachine) {
+    constructor(model: MainContract.model, dealsMachineJsoup: IDealsMachine) {
         this.model = model
         this.dealsMachine = dealsMachineJsoup
     }
@@ -43,7 +43,7 @@ class MainPresenter : MainMVP.presenter {
                 })
     }
 
-    override fun setView(view: MainMVP.view) {
+    override fun setView(view: MainContract.view) {
         this.view = view
     }
 

@@ -1,16 +1,17 @@
 package com.munstein.xboxdealsbr.app.main
 
 import com.munstein.xboxdealsbr.model.Deal
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
  * Created by @Munstein on 21/01/2018. --22:12
  */
 
-interface MainMVP {
+interface MainContract {
 
     interface model {
-        fun getHTML(url: String): Observable<String>
+        fun getHTML(url: String): Flowable<String>
     }
 
     interface view {
@@ -26,7 +27,7 @@ interface MainMVP {
 
     interface presenter {
         fun displayDeals()
-        fun setView(view: MainMVP.view)
+        fun setView(view: view)
         fun onDestroy()
     }
 }

@@ -1,6 +1,6 @@
 package com.munstein.xboxdealsbr.modules
 
-import com.munstein.xboxdealsbr.app.main.MainMVP
+import com.munstein.xboxdealsbr.app.main.MainContract
 import com.munstein.xboxdealsbr.app.main.MainModelOkHTTP
 import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
@@ -16,12 +16,12 @@ import dagger.Provides
 class MainModule {
 
     @Provides
-    fun provideMainPresenter(model: MainMVP.model, dealsMachineJsoup: IDealsMachine): MainMVP.presenter {
+    fun provideMainPresenter(model: MainContract.model, dealsMachineJsoup: IDealsMachine): MainContract.presenter {
         return MainPresenter(model, dealsMachineJsoup)
     }
 
     @Provides
-    fun provideMainModel(): MainMVP.model {
+    fun provideMainModel(): MainContract.model {
         return MainModelOkHTTP()
     }
 

@@ -14,14 +14,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), MainMVP.view {
+class MainActivity : BaseActivity(), MainContract.view {
 
     private lateinit var progressDialog: MaterialDialog
     private lateinit var dealsAdapter: DealsAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
     @Inject
-    lateinit var presenter: MainMVP.presenter
+    lateinit var presenter: MainContract.presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

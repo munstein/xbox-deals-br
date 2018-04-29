@@ -1,18 +1,19 @@
 package com.munstein.xboxdealsbr.app.main
 
-import io.reactivex.Observable
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
 /**
  * Created by @Munstein on 30/01/2018. --17:35
  */
-class MainModelOkHTTP : MainMVP.model {
+class MainModelOkHTTP : MainContract.model {
 
-    override fun getHTML(url: String): Observable<String> {
+    override fun getHTML(url: String): Flowable<String> {
         var client = OkHttpClient()
         var request = Request.Builder().url(url).build()
-        return Observable.create({
+        return Flowable.create({
             try {
                 var response = client.newCall(request).execute()
                 if (response.isSuccessful) {
@@ -24,7 +25,7 @@ class MainModelOkHTTP : MainMVP.model {
             } finally {
                 it.onComplete()
             }
-        })
+        }, BackpressureStrategy.LATEST)
     }
 
 }

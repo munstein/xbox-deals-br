@@ -1,16 +1,14 @@
 package com.munstein.xboxdealsbr
 
-import com.munstein.xboxdealsbr.app.main.MainMVP
+import com.munstein.xboxdealsbr.app.main.MainContract
 import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
-import com.munstein.xboxdealsbr.model.Deal
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnit
 
@@ -23,10 +21,10 @@ class PresenterTest{
     lateinit var presenter : MainPresenter
 
     @Mock
-    lateinit var viewMock: MainMVP.view
+    lateinit var viewMock: MainContract.view
 
     @Mock
-    lateinit var modelMock: MainMVP.model
+    lateinit var modelMock: MainContract.model
 
     @Mock
     lateinit var dealsMock : DealsMachineJsoup
@@ -36,8 +34,8 @@ class PresenterTest{
 
     @Before
     fun setup(){
-        modelMock = mock(MainMVP.model::class.java)
-        viewMock = mock(MainMVP.view::class.java)
+        modelMock = mock(MainContract.model::class.java)
+        viewMock = mock(MainContract.view::class.java)
         dealsMock = mock(DealsMachineJsoup::class.java)
         presenter = MainPresenter(modelMock, dealsMock)
         presenter.setView(viewMock)
