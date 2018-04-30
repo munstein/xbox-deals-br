@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
+    android:fillViewport="true"
     tools:context="com.munstein.xboxdealsbr.app.main.MainActivity">
 
     <android.support.constraint.ConstraintLayout
@@ -14,6 +15,7 @@
 
         <Button
             android:id="@+id/main_btn_reload"
+            style="@style/simple_button_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -21,7 +23,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/reload"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/main_txt_title"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/holder_deal" />
+
 
     </android.support.constraint.ConstraintLayout>
 

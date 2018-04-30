@@ -46,12 +46,14 @@ class MainActivity : BaseActivity(), MainContract.view {
     }
 
     override fun showDialog() {
-        progressDialog.show()
+        this.runOnUiThread {
+            progressDialog.show()
+        }
     }
 
     override fun hideDialog() {
         this.runOnUiThread {
-            progressDialog.hide()
+            progressDialog.dismiss()
         }
     }
 
@@ -90,11 +92,15 @@ class MainActivity : BaseActivity(), MainContract.view {
     }
 
     override fun showButton() {
-        main_btn_reload.visibility = View.VISIBLE
+        this.runOnUiThread {
+            main_btn_reload.visibility = View.VISIBLE
+        }
     }
 
     override fun showErrorTitle() {
+        this.runOnUiThread{
         main_txt_title.text = getString(R.string.error_msg)
+        }
     }
 
 }
