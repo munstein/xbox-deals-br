@@ -26,6 +26,7 @@ class MainActivity : BaseActivity(), MainContract.view {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar!!.elevation = 0f
         (application as BaseApp).getComponent().inject(this)
         presenter.setView(this)
         init()
