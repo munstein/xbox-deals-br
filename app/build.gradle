@@ -38,7 +38,8 @@ task ktlint(type: JavaExec, group: "verification") {
     classpath = configurations.ktlint
     main = "com.github.shyiko.ktlint.Main"
     args "src/**/*.kt"
-    args "--reporter=checkstyle, output=${buildDir}/ktlint.xml"
+    args "--reporter=json,output=report_ktlint.json"
+    args "--reporter=json"
 }
 
 dependencies {
