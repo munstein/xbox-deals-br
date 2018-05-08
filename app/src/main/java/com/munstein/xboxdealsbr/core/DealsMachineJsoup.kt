@@ -36,8 +36,10 @@ open class DealsMachineJsoup : IDealsMachine {
     override fun getTitle(html: String): String {
         try {
             var doc = Jsoup.parse(html)
-            var title = doc.select(".post-title")
-            return title[0].text()
+            var title = doc.select(".post-title").filter({
+                it.text().contains("with Gold")
+            }).first()
+            return title.text()
         } catch (exception: Exception) {
             return ""
         }
