@@ -1,7 +1,7 @@
 package com.munstein.xboxdealsbr
 
 import com.munstein.xboxdealsbr.app.main.MainModelOkHTTP
-import io.reactivex.observers.TestObserver
+import io.reactivex.subscribers.TestSubscriber
 import junit.framework.Assert
 import org.junit.Test
 
@@ -12,7 +12,7 @@ import org.junit.Test
 class MainModelTest {
 
     val mainModelOkHTTP = MainModelOkHTTP()
-    val testObserver = TestObserver<String>()
+    val testObserver = TestSubscriber <String>()
     val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
 

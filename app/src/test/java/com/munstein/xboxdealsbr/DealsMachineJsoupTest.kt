@@ -1,9 +1,8 @@
 package com.munstein.xboxdealsbr
 
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
-import com.munstein.xboxdealsbr.model.Deal
 import junit.framework.Assert
-import org.jsoup.Jsoup
+import org.junit.Before
 import org.junit.Test
 
 /**
@@ -11,52 +10,52 @@ import org.junit.Test
  */
 class DealsMachineJsoupTest {
 
+    private lateinit var dealsMachine: DealsMachineJsoup
+
+    @Before
+    fun setup() {
+        val dealsMachine = DealsMachineJsoup()
+    }
+
     @Test
-    fun testGetDeals(){
-        val url: String = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDeals() {
+        val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isNotEmpty())
     }
 
     @Test
-    fun testGetDealsPassingEmptyHTML(){
-        val html: String = ""
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDealsPassingEmptyHTML() {
+        val html = ""
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
     }
 
     @Test
-    fun testGetDealsPassingEmptyURL(){
-        val url: String = ""
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDealsPassingEmptyURL() {
+        val url = ""
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
     }
 
     @Test
-    fun testGetDealsPassingInvalidURL(){
-        val url: String = "not a valid url"
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDealsPassingInvalidURL() {
+        val url = "not a valid url"
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
     }
 
     @Test
-    fun testGetDealsPassingSenselessURL(){
-        val url: String = "http://google.com"
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDealsPassingSenselessURL() {
+        val url = "http://google.com"
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromURL(url).isEmpty())
     }
 
     @Test
-    fun testGetDealsPassingCorruptedHTML(){
-        val html: String = "this is not a valid html"
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDealsPassingCorruptedHTML() {
+        val html = "this is not a valid html"
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
     }
 
     @Test
-    fun testGetDealsPassingIncompletedHTML(){
-        val html: String = "<html></html>"
-        var dealsMachine = DealsMachineJsoup()
+    fun testGetDealsPassingIncompletedHTML() {
+        val html = "<html></html>"
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
     }
 

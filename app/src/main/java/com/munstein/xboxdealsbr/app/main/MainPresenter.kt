@@ -7,28 +7,21 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by @Munstein on 30/01/2018. --17:24
  */
-class MainPresenter : MainContract.presenter {
+class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: IDealsMachine) : MainContract.presenter {
 
     private lateinit var view: MainContract.view
-    private val model: MainContract.model
-    private val dealsMachine: IDealsMachine
+    private val dealsMachine: IDealsMachine = dealsMachineJsoup
     private lateinit var disposable: Disposable
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
-
-    constructor(model: MainContract.model, dealsMachineJsoup: IDealsMachine) {
-        this.model = model
-        this.dealsMachine = dealsMachineJsoup
-    }
 
     override fun displayDeals() {
         view.showDialog()
         disposable = model.getHTML(url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
-                .subscribe({
-                    var html = it
-                    var dealsList = dealsMachine.getLatestDealsFromHTML(html!!)
-                    var title = dealsMachine.getTitle(html)
+                .subscribe({ html ->
+                    val dealsList = dealsMachine.getLatestDealsFromHTML(html!!)
+                    val title = dealsMachine.getTitle(html)
                     view.loadDeals(dealsList)
                     view.loadTitle(title)
 
@@ -48,9 +41,9 @@ class MainPresenter : MainContract.presenter {
     }
 
     override fun onDestroy() {
-        if(disposable != null)
-        if (!disposable.isDisposed)
-            disposable.dispose()
+        if (disposable != null)
+            if (!disposable.isDisposed)
+                disposable.dispose()
     }
 
 }

@@ -3,7 +3,7 @@ package com.munstein.xboxdealsbr
 import com.munstein.xboxdealsbr.app.main.MainContract
 import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -43,7 +43,7 @@ class PresenterTest{
 
     @Test
     fun shouldShowDialog(){
-        `when`(modelMock!!.getHTML("")).thenReturn(Observable.just("hello"))
+        `when`(modelMock!!.getHTML("")).thenReturn(Flowable.just("hello"))
         presenter.displayDeals()
         verify(viewMock, times(1)).showDialog()
     }
@@ -51,7 +51,7 @@ class PresenterTest{
     @Test
     fun shouldShowErrorMsg(){
         `when`(modelMock!!.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
-                .thenReturn(Observable.error(Exception("error")))
+                .thenReturn(Flowable.error(Exception("error")))
         presenter.displayDeals()
         verify(viewMock, times(1)).showMessage(ArgumentMatchers.anyString())
     }
