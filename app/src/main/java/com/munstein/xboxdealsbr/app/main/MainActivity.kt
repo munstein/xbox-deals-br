@@ -11,6 +11,7 @@ import com.munstein.xboxdealsbr.base.BaseActivity
 import com.munstein.xboxdealsbr.base.BaseApp
 import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 
 
@@ -43,7 +44,7 @@ class MainActivity : BaseActivity(), MainContract.view {
                 .build()
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         presenter.displayDeals()
-        main_btn_reload.setOnClickListener({presenter.displayDeals()})
+        main_fab_reload.setOnClickListener({ presenter.displayDeals() })
     }
 
     override fun showDialog() {
@@ -88,19 +89,19 @@ class MainActivity : BaseActivity(), MainContract.view {
 
     override fun hideButton() {
         this.runOnUiThread {
-            main_btn_reload.visibility = View.GONE
+            main_fab_reload.visibility = View.GONE
         }
     }
 
     override fun showButton() {
         this.runOnUiThread {
-            main_btn_reload.visibility = View.VISIBLE
+            main_fab_reload.visibility = View.VISIBLE
         }
     }
 
     override fun showErrorTitle() {
-        this.runOnUiThread{
-        main_txt_title.text = getString(R.string.error_msg)
+        this.runOnUiThread {
+            main_txt_title.text = getString(R.string.error_msg)
         }
     }
 

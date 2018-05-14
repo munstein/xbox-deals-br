@@ -3,5 +3,6 @@
     <string name="dialog_loading">Loading...</string>
     <string name="reload">Reload</string>
     <string name="error_msg">Error retrieving deals.</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>

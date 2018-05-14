@@ -5,7 +5,6 @@ import io.reactivex.subscribers.TestSubscriber
 import junit.framework.Assert
 import org.junit.Test
 
-
 /**
  * Created by @Munstein on 09/03/2018. --02:35
  */

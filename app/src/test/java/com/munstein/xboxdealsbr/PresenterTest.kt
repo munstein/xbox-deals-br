@@ -12,7 +12,6 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnit
 
-
 /**
  * Created by @Munstein on 05/02/2018. --21:53
  */
