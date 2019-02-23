@@ -26,7 +26,6 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
                     view.loadTitle(title)
 
                 }, {
-                    val x = it.message
                     view.hideProgress()
                     view.showMessage("Error!")
                     view.showErrorTitle()

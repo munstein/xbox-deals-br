@@ -1,7 +1,6 @@
 package com.munstein.xboxdealsbr.app.main
 
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -25,7 +24,7 @@ class MainActivity : BaseActivity(), MainContract.view {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar!!.elevation = 0f
+        supportActionBar?.elevation = 0f
         (application as BaseApp).getComponent().inject(this)
         presenter.setView(this)
         init()
@@ -53,11 +52,8 @@ class MainActivity : BaseActivity(), MainContract.view {
         runOnUiThread {
             main_deals_recycler_view.visibility = VISIBLE
             dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
-            val dividerItemDecoration = DividerItemDecoration(main_deals_recycler_view.context,
-                    layoutManager.orientation)
             main_deals_recycler_view.adapter = dealsAdapter
             main_deals_recycler_view.layoutManager = layoutManager
-            main_deals_recycler_view.addItemDecoration(dividerItemDecoration)
         }
     }
 
