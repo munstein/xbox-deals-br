@@ -15,10 +15,10 @@ interface MainContract {
     }
 
     interface view {
-        fun showDialog()
-        fun hideDialog()
-        fun hideButton()
-        fun showButton()
+        fun showProgress()
+        fun hideProgress()
+        fun showReloadFab()
+        fun hideReloadFab()
         fun showMessage(msg: String)
         fun loadDeals(deals: List<Deal>)
         fun loadTitle(title: String)

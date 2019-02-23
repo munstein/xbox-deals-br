@@ -15,7 +15,7 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
     override fun displayDeals() {
-        view.showDialog()
+        view.showProgress()
         disposable = model.getHTML(url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
@@ -27,13 +27,13 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
 
                 }, {
                     val x = it.message
-                    view.hideDialog()
+                    view.hideProgress()
                     view.showMessage("Error!")
                     view.showErrorTitle()
-                    view.showButton()
+                    view.showReloadFab()
                 }, {
-                    view.hideDialog()
-                    view.hideButton()
+                    view.hideProgress()
+                    view.hideReloadFab()
                 })
     }
 

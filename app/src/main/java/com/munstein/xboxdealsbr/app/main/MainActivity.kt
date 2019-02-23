@@ -37,21 +37,20 @@ class MainActivity : BaseActivity(), MainContract.view {
         main_fab_reload.setOnClickListener { presenter.displayDeals() }
     }
 
-    override fun showDialog() {
+    override fun showProgress() {
         this.runOnUiThread {
-
+            main_progress.visibility = VISIBLE
         }
     }
 
-    override fun hideDialog() {
+    override fun hideProgress() {
         this.runOnUiThread {
-
+            main_progress.visibility = GONE
         }
     }
 
     override fun loadDeals(deals: List<Deal>) {
         runOnUiThread {
-            main_progress.visibility = GONE
             main_deals_recycler_view.visibility = VISIBLE
             dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
             val dividerItemDecoration = DividerItemDecoration(main_deals_recycler_view.context,
@@ -80,13 +79,13 @@ class MainActivity : BaseActivity(), MainContract.view {
         presenter.onDestroy()
     }
 
-    override fun hideButton() {
+    override fun hideReloadFab() {
         this.runOnUiThread {
             main_fab_reload.show()
         }
     }
 
-    override fun showButton() {
+    override fun showReloadFab() {
         this.runOnUiThread {
             main_fab_reload.hide()
         }

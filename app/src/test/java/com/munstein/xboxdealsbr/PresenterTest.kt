@@ -44,7 +44,7 @@ class PresenterTest{
     fun shouldShowDialog(){
         `when`(modelMock!!.getHTML("")).thenReturn(Flowable.just("hello"))
         presenter.displayDeals()
-        verify(viewMock, times(1)).showDialog()
+        verify(viewMock, times(1)).showProgress()
     }
 
     @Test
