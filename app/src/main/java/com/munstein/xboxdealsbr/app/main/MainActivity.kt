@@ -3,7 +3,6 @@ package com.munstein.xboxdealsbr.app.main
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
@@ -13,7 +12,6 @@ import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
-
 
 class MainActivity : BaseActivity(), MainContract.view {
 
@@ -33,10 +31,6 @@ class MainActivity : BaseActivity(), MainContract.view {
         init()
     }
 
-    override fun onPostResume() {
-        super.onPostResume()
-    }
-
     private fun init() {
         progressDialog = MaterialDialog.Builder(this)
                 .content(R.string.dialog_loading)
@@ -44,7 +38,7 @@ class MainActivity : BaseActivity(), MainContract.view {
                 .build()
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         presenter.displayDeals()
-        main_fab_reload.setOnClickListener({ presenter.displayDeals() })
+        main_fab_reload.setOnClickListener{ presenter.displayDeals() }
     }
 
     override fun showDialog() {
@@ -89,13 +83,13 @@ class MainActivity : BaseActivity(), MainContract.view {
 
     override fun hideButton() {
         this.runOnUiThread {
-            main_fab_reload.visibility = View.GONE
+            main_fab_reload.show()
         }
     }
 
     override fun showButton() {
         this.runOnUiThread {
-            main_fab_reload.visibility = View.VISIBLE
+            main_fab_reload.hide()
         }
     }
 
