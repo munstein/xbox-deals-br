@@ -12,11 +12,11 @@ import okhttp3.Request
 class MainModelOkHTTP : MainContract.model {
 
     override fun getHTML(url: String): Flowable<String> {
-        var client = OkHttpClient()
-        var request = Request.Builder().url(url).build()
+        val client = OkHttpClient()
+        val request = Request.Builder().url(url).build()
         return create({
             try {
-                var response = client.newCall(request).execute()
+                val response = client.newCall(request).execute()
                 if (response.isSuccessful) {
                     it.onNext(response.body()!!.string())
                 }
