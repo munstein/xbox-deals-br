@@ -32,6 +32,7 @@ class MainActivity : BaseActivity(), MainContract.view {
 
     private fun init() {
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        main_deals_recycler_view.layoutManager = layoutManager
         presenter.displayDeals()
         main_fab_reload.setOnClickListener { presenter.displayDeals() }
     }
@@ -50,10 +51,9 @@ class MainActivity : BaseActivity(), MainContract.view {
 
     override fun loadDeals(deals: List<Deal>) {
         runOnUiThread {
+            dealsAdapter = DealsAdapter(ArrayList(deals))
             main_deals_recycler_view.visibility = VISIBLE
-            dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
             main_deals_recycler_view.adapter = dealsAdapter
-            main_deals_recycler_view.layoutManager = layoutManager
         }
     }
 
@@ -76,13 +76,13 @@ class MainActivity : BaseActivity(), MainContract.view {
 
     override fun hideReloadFab() {
         this.runOnUiThread {
-            main_fab_reload.show()
+            main_fab_reload.hide()
         }
     }
 
     override fun showReloadFab() {
         this.runOnUiThread {
-            main_fab_reload.hide()
+            main_fab_reload.show()
         }
     }
 

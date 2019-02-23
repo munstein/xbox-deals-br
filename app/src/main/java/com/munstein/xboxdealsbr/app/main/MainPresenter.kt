@@ -7,6 +7,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by @Munstein on 30/01/2018. --17:24
  */
+
 class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: IDealsMachine) : MainContract.presenter {
 
     private lateinit var view: MainContract.view
@@ -20,19 +21,11 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
                 .subscribe({ html ->
-                    val dealsList = dealsMachine.getLatestDealsFromHTML(html!!)
-                    val title = dealsMachine.getTitle(html)
-                    view.loadDeals(dealsList)
-                    view.loadTitle(title)
-
+                    onNext(html)
                 }, {
-                    view.hideProgress()
-                    view.showMessage("Error!")
-                    view.showErrorTitle()
-                    view.showReloadFab()
+                    onError()
                 }, {
-                    view.hideProgress()
-                    view.hideReloadFab()
+                    onComplete()
                 })
     }
 
@@ -41,9 +34,27 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
     }
 
     override fun onDestroy() {
-        if (disposable != null)
-            if (!disposable.isDisposed)
-                disposable.dispose()
+        if (!disposable.isDisposed)
+            disposable.dispose()
+    }
+
+    private fun onNext(html: String) {
+        val dealsList = dealsMachine.getLatestDealsFromHTML(html)
+        val title = dealsMachine.getTitle(html)
+        view.loadDeals(dealsList)
+        view.loadTitle(title)
+    }
+
+    private fun onComplete() {
+        view.hideProgress()
+        view.hideReloadFab()
+    }
+
+    private fun onError() {
+        view.hideProgress()
+        view.showMessage("Error!")
+        view.showErrorTitle()
+        view.showReloadFab()
     }
 
 }

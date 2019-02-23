@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr.core
 
 import com.munstein.xboxdealsbr.model.Deal
+import io.reactivex.Flowable
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
@@ -86,4 +87,6 @@ open class DealsMachineJsoup : IDealsMachine {
         }
         return ArrayList()
     }
+
+    private fun x(){}
 }
