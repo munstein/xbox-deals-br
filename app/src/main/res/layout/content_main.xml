@@ -9,7 +9,7 @@
     android:animateLayoutChanges="true"
     tools:context="com.munstein.xboxdealsbr.app.main.MainActivity">
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/main_txt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

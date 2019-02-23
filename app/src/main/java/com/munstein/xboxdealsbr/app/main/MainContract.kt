@@ -26,7 +26,7 @@ interface MainContract {
     }
 
     interface presenter {
-        fun displayDeals()
+        fun listDeals()
         fun setView(view: view)
         fun onDestroy()
     }

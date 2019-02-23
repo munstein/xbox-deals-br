@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 import android.view.animation.AnimationUtils
 
-
 class MainActivity : BaseActivity(), MainContract.view {
 
     private lateinit var dealsAdapter: DealsAdapter
@@ -26,19 +25,35 @@ class MainActivity : BaseActivity(), MainContract.view {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.elevation = 0f
         (application as BaseApp).getComponent().inject(this)
-        presenter.setView(this)
         init()
     }
 
     private fun init() {
+        setupRecycleView()
+        setupEvents()
+        setupAppBar()
+        setupPresenter()
+    }
+
+    private fun setupPresenter() {
+        presenter.setView(this)
+        presenter.listDeals()
+    }
+
+    private fun setupRecycleView() {
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_fall_down)
-        main_deals_recycler_view.setLayoutAnimation(animation)
+        main_deals_recycler_view.layoutAnimation = animation
         main_deals_recycler_view.layoutManager = layoutManager
-        presenter.displayDeals()
-        main_fab_reload.setOnClickListener { presenter.displayDeals() }
+    }
+
+    private fun setupAppBar() {
+        supportActionBar?.elevation = 0f
+    }
+
+    private fun setupEvents() {
+        main_fab_reload.setOnClickListener { presenter.listDeals() }
     }
 
     override fun showProgress() {

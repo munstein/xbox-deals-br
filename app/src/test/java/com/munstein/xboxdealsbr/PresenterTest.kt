@@ -43,7 +43,7 @@ class PresenterTest{
     @Test
     fun shouldShowDialog(){
         `when`(modelMock!!.getHTML("")).thenReturn(Flowable.just("hello"))
-        presenter.displayDeals()
+        presenter.listDeals()
         verify(viewMock, times(1)).showProgress()
     }
 
@@ -51,7 +51,7 @@ class PresenterTest{
     fun shouldShowErrorMsg(){
         `when`(modelMock!!.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
                 .thenReturn(Flowable.error(Exception("error")))
-        presenter.displayDeals()
+        presenter.listDeals()
         verify(viewMock, times(1)).showMessage(ArgumentMatchers.anyString())
     }
 

@@ -15,7 +15,7 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
     private lateinit var disposable: Disposable
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
-    override fun displayDeals() {
+    override fun listDeals() {
         view.showProgress()
         disposable = model.getHTML(url)
                 .subscribeOn(Schedulers.io())
