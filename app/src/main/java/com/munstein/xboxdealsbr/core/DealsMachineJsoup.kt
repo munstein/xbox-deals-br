@@ -12,69 +12,67 @@ import org.jsoup.select.Elements
 open class DealsMachineJsoup : IDealsMachine {
 
     override fun getLatestDealsFromHTML(html: String): List<Deal> {
-        if (html.length > 0) {
+        return if (html.isNotEmpty()) {
             val doc = Jsoup.parse(html)
             val url = getLatestDealsURL(doc)
             val elements = getDealsTables(url)
-            return getDealsFromTables(elements)
+            getDealsFromTables(elements)
         } else {
-            return ArrayList()
+            ArrayList()
         }
     }
 
     override fun getLatestDealsFromURL(baseUrl: String): List<Deal> {
-        try {
+        return try {
             val doc = Jsoup.connect(baseUrl).get()
             val url = getLatestDealsURL(doc)
             val elements = getDealsTables(url)
-            return getDealsFromTables(elements)
+            getDealsFromTables(elements)
         } catch (exception: Exception) {
-            return ArrayList()
+            ArrayList()
         }
     }
 
     override fun getTitle(html: String): String {
-        try {
+        return try {
             val doc = Jsoup.parse(html)
-            val title = doc.select(".post-title").filter({
+            val title = doc.select(".post-title").first {
                 it.text().contains("with Gold")
-            }).first()
-            return title.text()
+            }
+            title.text()
         } catch (exception: Exception) {
-            return ""
+            ""
         }
     }
 
     private fun getLatestDealsURL(doc: Document): String {
-        try {
+        return try {
             val elements = doc.select("article")
-            val h2 = elements.get(0).select(".title")
-            val a = h2.get(0).select("a")
-            val url = a.attr("href")
-            return url
+            val h2 = elements[0].select(".title")
+            val a = h2[0].select("a")
+            a.attr("href")
         } catch (exception: Exception) {
-            return ""
+            ""
         }
     }
 
     private fun getDealsTables(url: String): Elements {
-        if (url.length > 0) {
+        return if (url.isNotEmpty()) {
             val dealsPageDocument = Jsoup.connect(url).get()
             val div = dealsPageDocument.select(".entry-content")
-            val tables = div.select("table")
-            return tables
+            div.select("table")
         } else {
-            return Elements()
+            Elements()
         }
     }
 
     private fun getDealsFromTables(tables: Elements): List<Deal> {
         if (tables.size > 0) {
             val deals = ArrayList<Deal>()
-            for (i in 0..tables.size - 1) {
+            for (i in 0 until tables.size) {
                 val tableContents = tables[i].select("tr")
                 if (tableContents.select("td")[0].text().contains("Xbox One"))
-                    for (x in 2 .. tableContents.size - 1) {
+                    for (x in 2 until tableContents.size) {
                         val tds = tableContents[x].select("td")
                         val game = tds[0].text()
                         val type = tds[1].text()
