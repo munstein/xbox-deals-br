@@ -11,43 +11,29 @@ import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
 import android.graphics.Typeface
 
-
-
 /**
  * Created by @Munstein on 25/01/2018. --14:55
  */
 
-class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
-
-    private var deals: ArrayList<Deal>
-
-    constructor(deals: ArrayList<Deal>) {
-        this.deals = deals
-    }
-
-    override fun onBindViewHolder(holder: DealsHolder?, position: Int) {
-        var deal = deals[position]
+class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
+    override fun onBindViewHolder(holder: DealsHolder, position: Int) {
+        val deal = deals[position]
         with(deal){
-            holder!!.txtGame.setText(game)
-            holder!!.txtType.setText(type)
-            holder!!.txtDiscount.setText(discount)
-            holder!!.txtValue.setText(value)
-            holder!!.txtGame.setOnClickListener({
+            holder.txtGame.text = game
+            holder.txtType.text = type
+            holder.txtDiscount.text = discount
+            holder.txtValue.text = value
+            holder.txtGame.setOnClickListener {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                holder!!.txtGame.context.startActivity(browserIntent)
-            })
+                holder.txtGame.context.startActivity(browserIntent)
+            }
         }
-
     }
 
-    override fun getItemCount(): Int {
-        return deals.size
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DealsHolder {
-        var view = DealsHolder(LayoutInflater.from(parent!!.context)
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): DealsHolder {
+        val view = DealsHolder(LayoutInflater.from(parent.context)
                 .inflate(R.layout.holder_deal, parent, false))
-        var font = Typeface.createFromAsset(parent.context.getAssets(),
+        val font = Typeface.createFromAsset(parent.context.assets,
                 "fonts/X360.ttf")
 
         view.txtGame.typeface = font
@@ -56,6 +42,10 @@ class DealsAdapter : RecyclerView.Adapter<DealsAdapter.DealsHolder> {
         view.txtValue.typeface = font
 
         return view
+    }
+
+    override fun getItemCount(): Int {
+        return deals.size
     }
 
     class DealsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
