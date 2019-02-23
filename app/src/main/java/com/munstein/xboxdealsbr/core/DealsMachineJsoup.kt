@@ -71,21 +71,19 @@ open class DealsMachineJsoup : IDealsMachine {
             val deals = ArrayList<Deal>()
             for (i in 0 until tables.size) {
                 val tableContents = tables[i].select("tr")
-                if (tableContents.select("td")[0].text().contains("Xbox One"))
-                    for (x in 2 until tableContents.size) {
-                        val tds = tableContents[x].select("td")
-                        val game = tds[0].text()
-                        val type = tds[1].text()
-                        val url = tds[0].select("a").attr("href")
-                        val discount = tds[2].text()
-                        val value = tds[3].text()
-                        deals.add(Deal(game, type, discount, value, url))
-                    }
+                for (x in 2 until tableContents.size) {
+                    val tds = tableContents[x].select("td")
+                    val game = tds[0].text()
+                    val type = tds[1].text()
+                    val url = tds[0].select("a").attr("href")
+                    val discount = tds[2].text()
+                    val value = tds[3].text()
+                    deals.add(Deal(game, type, discount, value, url))
+                }
+                deals.sortBy { it.game }
+                return deals
             }
-            deals.sortBy { it.game }
-            return deals
-        } else {
-            return ArrayList()
         }
+        return ArrayList()
     }
 }

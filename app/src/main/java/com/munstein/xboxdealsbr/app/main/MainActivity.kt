@@ -3,7 +3,8 @@ package com.munstein.xboxdealsbr.app.main
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
 import com.munstein.xboxdealsbr.base.BaseActivity
@@ -15,7 +16,6 @@ import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainContract.view {
 
-    private lateinit var progressDialog: MaterialDialog
     private lateinit var dealsAdapter: DealsAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
@@ -32,35 +32,34 @@ class MainActivity : BaseActivity(), MainContract.view {
     }
 
     private fun init() {
-        progressDialog = MaterialDialog.Builder(this)
-                .content(R.string.dialog_loading)
-                .progress(true, 0)
-                .build()
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         presenter.displayDeals()
-        main_fab_reload.setOnClickListener{ presenter.displayDeals() }
+        main_fab_reload.setOnClickListener { presenter.displayDeals() }
     }
 
     override fun showDialog() {
         this.runOnUiThread {
-            progressDialog.show()
+
         }
     }
 
     override fun hideDialog() {
         this.runOnUiThread {
-            progressDialog.dismiss()
+
         }
     }
 
     override fun loadDeals(deals: List<Deal>) {
-        dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
-        val dividerItemDecoration = DividerItemDecoration(main_deals_recycler_view.context,
-                layoutManager.orientation)
-        this.runOnUiThread {
+        runOnUiThread {
+            main_progress.visibility = GONE
+            main_deals_recycler_view.visibility = VISIBLE
+            dealsAdapter = DealsAdapter(deals as ArrayList<Deal>)
+            val dividerItemDecoration = DividerItemDecoration(main_deals_recycler_view.context,
+                    layoutManager.orientation)
             main_deals_recycler_view.adapter = dealsAdapter
             main_deals_recycler_view.layoutManager = layoutManager
             main_deals_recycler_view.addItemDecoration(dividerItemDecoration)
+
         }
     }
 

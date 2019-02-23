@@ -8,8 +8,11 @@
     tools:context="com.munstein.xboxdealsbr.app.main.MainActivity">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/main_contraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <TextView
             android:id="@+id/main_txt_title"
@@ -39,6 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_txt_title"
             app:layout_constraintVertical_bias="0.0"
+            android:visibility="gone"
             tools:listitem="@layout/holder_deal" />
 
 

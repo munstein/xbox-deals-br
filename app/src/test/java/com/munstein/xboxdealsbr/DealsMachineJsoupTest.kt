@@ -2,7 +2,6 @@ package com.munstein.xboxdealsbr
 
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import junit.framework.Assert
-import org.junit.Before
 import org.junit.Test
 
 /**
@@ -10,12 +9,7 @@ import org.junit.Test
  */
 class DealsMachineJsoupTest {
 
-    private lateinit var dealsMachine: DealsMachineJsoup
-
-    @Before
-    fun setup() {
-        val dealsMachine = DealsMachineJsoup()
-    }
+    private val dealsMachine by lazy { DealsMachineJsoup() }
 
     @Test
     fun testGetDeals() {
