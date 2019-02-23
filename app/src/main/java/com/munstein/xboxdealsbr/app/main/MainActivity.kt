@@ -12,6 +12,8 @@ import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
+import android.view.animation.AnimationUtils
+
 
 class MainActivity : BaseActivity(), MainContract.view {
 
@@ -32,6 +34,8 @@ class MainActivity : BaseActivity(), MainContract.view {
 
     private fun init() {
         layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_fall_down)
+        main_deals_recycler_view.setLayoutAnimation(animation)
         main_deals_recycler_view.layoutManager = layoutManager
         presenter.displayDeals()
         main_fab_reload.setOnClickListener { presenter.displayDeals() }
