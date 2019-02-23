@@ -14,7 +14,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp">
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/deal_txt_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -22,14 +22,13 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/placeholder_title" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/deal_txt_type"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +37,7 @@
             app:layout_constraintTop_toTopOf="@+id/deal_txt_discount"
             tools:text="@string/placeholder_type" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/deal_txt_discount"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -50,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/deal_txt_title"
             tools:text="@string/placeholder_discount" />
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/deal_txt_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

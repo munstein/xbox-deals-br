@@ -33,13 +33,6 @@ class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<De
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): DealsHolder {
         val view = DealsHolder(LayoutInflater.from(parent.context)
                 .inflate(R.layout.holder_deal, parent, false))
-        val font = Typeface.createFromAsset(parent.context.assets,
-                "fonts/X360.ttf")
-
-        view.txtGame.typeface = font
-        view.txtType.typeface= font
-        view.txtDiscount.typeface = font
-        view.txtValue.typeface = font
 
         return view
     }
