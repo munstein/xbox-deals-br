@@ -58,7 +58,6 @@ class MainActivity : BaseActivity(), MainContract.view {
             main_deals_recycler_view.adapter = dealsAdapter
             main_deals_recycler_view.layoutManager = layoutManager
             main_deals_recycler_view.addItemDecoration(dividerItemDecoration)
-
         }
     }
 
