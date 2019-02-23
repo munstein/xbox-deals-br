@@ -29,5 +29,4 @@ class MainModule {
     fun provideDealsMachine(): IDealsMachine {
         return DealsMachineJsoup()
     }
-
 }

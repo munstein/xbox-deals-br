@@ -20,7 +20,6 @@ class MainModelOkHTTP : MainContract.model {
                 if (response.isSuccessful) {
                     it.onNext(response.body()!!.string())
                 }
-
             } catch (exception: Exception) {
                 it.onError(exception)
             } finally {
@@ -28,5 +27,4 @@ class MainModelOkHTTP : MainContract.model {
             }
         }, BackpressureStrategy.LATEST)
     }
-
 }

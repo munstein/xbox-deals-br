@@ -14,7 +14,6 @@ class MainModelTest {
     val testObserver = TestSubscriber <String>()
     val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
-
     @Test
     fun shoudlAssertComplete() {
         mainModelOkHTTP.getHTML(url)

@@ -110,5 +110,4 @@ class MainActivity : BaseActivity(), MainContract.view {
             main_txt_title.text = getString(R.string.error_msg)
         }
     }
-
 }

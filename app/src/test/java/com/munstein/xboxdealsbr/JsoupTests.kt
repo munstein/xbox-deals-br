@@ -13,26 +13,26 @@ import org.junit.Test
 
 class JsoupTests {
 
-    private lateinit var doc : Document
+    private lateinit var doc: Document
 
     @Before
-    fun init(){
+    fun init() {
         doc = Jsoup.connect("https://www.arenaxbox.com.br/tag/deals-with-gold/").get()
     }
 
     @Test
-    fun basicTest(){
+    fun basicTest() {
         Assert.assertEquals("Deals with Gold - Arena Xbox", doc.title())
     }
 
     @Test
-    fun getTenLatestDealsArticles(){
+    fun getTenLatestDealsArticles() {
         var elements = doc.select(".listing-blog-4" )
         Assert.assertEquals(10, elements.get(0).childNodeSize())
     }
 
     @Test
-    fun getLatestDealsLink(){
+    fun getLatestDealsLink() {
         var elements = doc.select("article" )
         var h2 = elements.get(0).select(".title")
         var a = h2.get(0).select("a")
@@ -41,7 +41,7 @@ class JsoupTests {
     }
 
     @Test
-    fun getTablesFromLink(){
+    fun getTablesFromLink() {
         var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
         var dealsPageDocument = Jsoup.connect(url).get()
         var div = dealsPageDocument.select(".entry-content")
@@ -50,30 +50,29 @@ class JsoupTests {
     }
 
     @Test
-    fun getDealsFromTables(){
+    fun getDealsFromTables() {
         var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
         var dealsPageDocument = Jsoup.connect(url).get()
         var div = dealsPageDocument.select(".entry-content")
         var tables = div.select("table")
         var tableContents = tables[0].select("tr")
         var deals = ArrayList<Deal>()
-        for (i in 2 .. tableContents.size-1){
+        for (i in 2..tableContents.size - 1) {
             var tds = tableContents[i].select("td")
             var game = tds[0].text()
             var type = tds[1].text()
             var discount = tds[2].text()
             var value = tds[3].text()
-            deals.add(Deal(game,type,discount,value, ""))
+            deals.add(Deal(game, type, discount, value, ""))
         }
         Assert.assertEquals(deals.size, tableContents.size - 2)
     }
 
     @Test
-    fun getTitleTest(){
+    fun getTitleTest() {
         var url = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
         var dealsPageDocument = Jsoup.connect(url).get()
         var title = dealsPageDocument.select(".post-title").text()
         Assert.assertEquals("Deals with Gold e Ofertas Especiais – 16 a 22/01", title)
     }
-
 }

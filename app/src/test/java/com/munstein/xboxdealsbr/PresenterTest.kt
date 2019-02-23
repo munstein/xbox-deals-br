@@ -15,9 +15,9 @@ import org.mockito.junit.MockitoJUnit
 /**
  * Created by @Munstein on 05/02/2018. --21:53
  */
-class PresenterTest{
+class PresenterTest {
 
-    lateinit var presenter : MainPresenter
+    lateinit var presenter: MainPresenter
 
     @Mock
     lateinit var viewMock: MainContract.view
@@ -26,13 +26,13 @@ class PresenterTest{
     lateinit var modelMock: MainContract.model
 
     @Mock
-    lateinit var dealsMock : DealsMachineJsoup
+    lateinit var dealsMock: DealsMachineJsoup
 
     @Rule @JvmField
     val mockitoRule = MockitoJUnit.rule()
 
     @Before
-    fun setup(){
+    fun setup() {
         modelMock = mock(MainContract.model::class.java)
         viewMock = mock(MainContract.view::class.java)
         dealsMock = mock(DealsMachineJsoup::class.java)
@@ -41,18 +41,17 @@ class PresenterTest{
     }
 
     @Test
-    fun shouldShowDialog(){
+    fun shouldShowDialog() {
         `when`(modelMock!!.getHTML("")).thenReturn(Flowable.just("hello"))
         presenter.listDeals()
         verify(viewMock, times(1)).showProgress()
     }
 
     @Test
-    fun shouldShowErrorMsg(){
+    fun shouldShowErrorMsg() {
         `when`(modelMock!!.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
                 .thenReturn(Flowable.error(Exception("error")))
         presenter.listDeals()
         verify(viewMock, times(1)).showMessage(ArgumentMatchers.anyString())
     }
-
 }

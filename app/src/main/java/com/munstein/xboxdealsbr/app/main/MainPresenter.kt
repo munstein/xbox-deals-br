@@ -56,5 +56,4 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
         view.showErrorTitle()
         view.showReloadFab()
     }
-
 }

@@ -2,7 +2,6 @@ package com.munstein.xboxdealsbr.app.main
 
 import com.munstein.xboxdealsbr.model.Deal
 import io.reactivex.Flowable
-import io.reactivex.Observable
 
 /**
  * Created by @Munstein on 21/01/2018. --22:12

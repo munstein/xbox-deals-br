@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
-import android.graphics.Typeface
 
 /**
  * Created by @Munstein on 25/01/2018. --14:55
@@ -18,7 +17,7 @@ import android.graphics.Typeface
 class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
     override fun onBindViewHolder(holder: DealsHolder, position: Int) {
         val deal = deals[position]
-        with(deal){
+        with(deal) {
             holder.txtGame.text = game
             holder.txtType.text = type
             holder.txtDiscount.text = discount
@@ -47,7 +46,5 @@ class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<De
         val txtType: TextView = itemView.findViewById(R.id.deal_txt_type)
         val txtDiscount: TextView = itemView.findViewById(R.id.deal_txt_discount)
         val txtValue: TextView = itemView.findViewById(R.id.deal_txt_value)
-
     }
-
 }

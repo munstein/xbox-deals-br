@@ -52,5 +52,4 @@ class DealsMachineJsoupTest {
         val html = "<html></html>"
         Assert.assertEquals(true, dealsMachine.getLatestDealsFromHTML(html).isEmpty())
     }
-
 }

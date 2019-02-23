@@ -5,7 +5,6 @@ import com.munstein.xboxdealsbr.components.DaggerMainComponent
 import com.munstein.xboxdealsbr.components.MainComponent
 import com.munstein.xboxdealsbr.modules.MainModule
 
-
 /**
  * Created by @Munstein on 06/03/2018. --18:32
  */
@@ -25,5 +24,4 @@ class BaseApp : Application() {
     fun getComponent(): MainComponent {
         return component
     }
-
 }
