@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr
 
-import okhttp3.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.junit.Assert
 import org.junit.Test
 

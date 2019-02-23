@@ -9,7 +9,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.times
 import org.mockito.junit.MockitoJUnit
 
 /**
@@ -28,7 +31,8 @@ class PresenterTest {
     @Mock
     lateinit var dealsMock: DealsMachineJsoup
 
-    @Rule @JvmField
+    @Rule
+    @JvmField
     val mockitoRule = MockitoJUnit.rule()
 
     @Before
