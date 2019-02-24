@@ -15,6 +15,6 @@ class ServicesTest {
         val client = OkHttpClient()
         val request = Request.Builder().url("https://github.com/square/okhttp/wiki/Recipes").build()
         val response = client.newCall(request).execute()
-        Assert.assertEquals(true, response.body()!!.string().contains("<!DOCTYPE html>"))
+        Assert.assertEquals(true, response.body()?.string()?.contains("<!DOCTYPE html>"))
     }
 }
