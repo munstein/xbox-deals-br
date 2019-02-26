@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr.app.main
 
 import com.munstein.xboxdealsbr.core.IDealsMachine
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
@@ -12,12 +13,12 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
 
     private lateinit var view: MainContract.view
     private val dealsMachine: IDealsMachine = dealsMachineJsoup
-    private lateinit var disposable: Disposable
+    private val disposable by lazy { CompositeDisposable() }
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
     override fun listDeals() {
         view.showProgress()
-        disposable = model.getHTML(url)
+        val subscription = model.getHTML(url)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
                 .subscribe({ html ->
@@ -27,6 +28,7 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
                 }, {
                     onComplete()
                 })
+        disposable.add(subscription)
     }
 
     override fun setView(view: MainContract.view) {

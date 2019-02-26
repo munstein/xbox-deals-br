@@ -46,7 +46,7 @@ class PresenterTest {
 
     @Test
     fun shouldShowDialog() {
-        `when`(modelMock.getHTML("")).thenReturn(Flowable.just("hello"))
+        `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/")).thenReturn(Flowable.just("hello"))
         presenter.listDeals()
         verify(viewMock, times(1)).showProgress()
     }
