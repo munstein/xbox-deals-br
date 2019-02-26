@@ -55,6 +55,6 @@ class MainPresenterTest {
         `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
                 .thenReturn(Flowable.error(Exception("error")))
         presenter.listDeals()
-        verify(viewMock, times(1)).showErrorTitle()
+        verify(viewMock, times(1)).hideProgress()
     }
 }
