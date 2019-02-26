@@ -4,10 +4,12 @@ import com.munstein.xboxdealsbr.app.main.MainContract
 import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
@@ -47,7 +49,7 @@ class MainPresenterTest {
     fun shouldShowDialog() {
         `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/")).thenReturn(Flowable.just("hello"))
         presenter.listDeals()
-        verify(viewMock, times(1)).showProgress()
+        verify(viewMock).showProgress()
     }
 
     @Test
@@ -55,6 +57,7 @@ class MainPresenterTest {
         `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
                 .thenReturn(Flowable.error(Exception("error")))
         presenter.listDeals()
-        verify(viewMock, times(1)).hideProgress()
+        Thread.sleep(2000)
+        verify(viewMock).hideProgress()
     }
 }
