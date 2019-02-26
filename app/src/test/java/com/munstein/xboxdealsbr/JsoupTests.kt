@@ -5,7 +5,6 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.junit.Assert
 import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 
 /**
@@ -14,11 +13,9 @@ import org.junit.Test
 
 class JsoupTests {
 
-
     private val contentTestUrl = "https://www.arenaxbox.com.br/deals-with-gold-e-ofertas-especiais-16-22-01/"
     private val baseTestUrl = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
     private lateinit var doc: Document
-
 
     @Before
     fun init() {

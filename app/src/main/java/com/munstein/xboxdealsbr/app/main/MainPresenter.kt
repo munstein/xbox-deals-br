@@ -2,7 +2,6 @@ package com.munstein.xboxdealsbr.app.main
 
 import com.munstein.xboxdealsbr.core.IDealsMachine
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 /**
