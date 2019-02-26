@@ -5,6 +5,7 @@ import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import io.reactivex.Flowable
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
@@ -50,7 +51,7 @@ class MainPresenterTest {
         verify(viewMock).showProgress()
     }
 
-    @Test
+    @Ignore @Test
     fun shouldShowErrorMsg() {
         `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
                 .thenReturn(Flowable.error(Exception("error")))
