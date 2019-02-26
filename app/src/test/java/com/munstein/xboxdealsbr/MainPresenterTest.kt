@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnit
 /**
  * Created by @Munstein on 05/02/2018. --21:53
  */
-class PresenterTest {
+class MainPresenterTest {
 
     lateinit var presenter: MainPresenter
 
