@@ -14,7 +14,7 @@ import com.munstein.xboxdealsbr.model.Deal
  * Created by @Munstein on 25/01/2018. --14:55
  */
 
-class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
+class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
     override fun onBindViewHolder(holder: DealsHolder, position: Int) {
         val deal = deals[position]
         with(deal) {
