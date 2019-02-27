@@ -9,7 +9,7 @@ import okhttp3.Request
 /**
  * Created by @Munstein on 30/01/2018. --17:35
  */
-class MainModelOkHTTP : MainContract.model {
+class MainModelOkHTTP : MainContract.Model {
 
     override fun getHTML(url: String): Flowable<String> {
         val client = OkHttpClient()

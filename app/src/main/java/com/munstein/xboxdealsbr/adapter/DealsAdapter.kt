@@ -30,10 +30,9 @@ class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<De
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): DealsHolder {
-        val view = DealsHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.holder_deal, parent, false))
 
-        return view
+        return DealsHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.holder_deal, parent, false))
     }
 
     override fun getItemCount(): Int {

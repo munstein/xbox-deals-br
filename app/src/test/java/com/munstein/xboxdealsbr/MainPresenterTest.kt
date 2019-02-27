@@ -12,7 +12,6 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
-import org.mockito.Mockito.times
 import org.mockito.junit.MockitoJUnit
 
 /**
@@ -20,13 +19,13 @@ import org.mockito.junit.MockitoJUnit
  */
 class MainPresenterTest {
 
-    lateinit var presenter: MainPresenter
+    private lateinit var presenter: MainPresenter
 
     @Mock
-    lateinit var viewMock: MainContract.view
+    lateinit var viewMock: MainContract.View
 
     @Mock
-    lateinit var modelMock: MainContract.model
+    lateinit var modelMock: MainContract.Model
 
     @Mock
     lateinit var dealsMock: DealsMachineJsoup
@@ -37,8 +36,8 @@ class MainPresenterTest {
 
     @Before
     fun setup() {
-        modelMock = mock(MainContract.model::class.java)
-        viewMock = mock(MainContract.view::class.java)
+        modelMock = mock(MainContract.Model::class.java)
+        viewMock = mock(MainContract.View::class.java)
         dealsMock = mock(DealsMachineJsoup::class.java)
         presenter = MainPresenter(modelMock, dealsMock)
         presenter.setView(viewMock)
