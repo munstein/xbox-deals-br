@@ -50,7 +50,8 @@ class MainPresenterTest {
         verify(viewMock).showProgress()
     }
 
-    @Ignore @Test
+    @Ignore
+    @Test
     fun shouldShowErrorMsg() {
         `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
                 .thenReturn(Flowable.error(Exception("error")))
