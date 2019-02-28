@@ -8,9 +8,9 @@ import io.reactivex.schedulers.Schedulers
  * Created by @Munstein on 30/01/2018. --17:24
  */
 
-class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: IDealsMachine) : MainContract.presenter {
+class MainPresenter(private val model: MainContract.Model, dealsMachineJsoup: IDealsMachine) : MainContract.Presenter {
 
-    private lateinit var view: MainContract.view
+    private lateinit var view: MainContract.View
     private val dealsMachine: IDealsMachine = dealsMachineJsoup
     private val disposable by lazy { CompositeDisposable() }
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
@@ -30,7 +30,7 @@ class MainPresenter(private val model: MainContract.model, dealsMachineJsoup: ID
         disposable.add(subscription)
     }
 
-    override fun setView(view: MainContract.view) {
+    override fun setView(view: MainContract.View) {
         this.view = view
     }
 

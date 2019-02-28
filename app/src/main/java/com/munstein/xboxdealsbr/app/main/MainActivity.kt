@@ -14,13 +14,13 @@ import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 import android.view.animation.AnimationUtils
 
-class MainActivity : BaseActivity(), MainContract.view {
+class MainActivity : BaseActivity(), MainContract.View {
 
     private lateinit var dealsAdapter: DealsAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
     @Inject
-    lateinit var presenter: MainContract.presenter
+    lateinit var presenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

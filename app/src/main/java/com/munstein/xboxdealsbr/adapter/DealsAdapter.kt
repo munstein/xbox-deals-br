@@ -14,7 +14,7 @@ import com.munstein.xboxdealsbr.model.Deal
  * Created by @Munstein on 25/01/2018. --14:55
  */
 
-class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
+class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
     override fun onBindViewHolder(holder: DealsHolder, position: Int) {
         val deal = deals[position]
         with(deal) {
@@ -30,10 +30,9 @@ class DealsAdapter(private var deals: ArrayList<Deal>) : RecyclerView.Adapter<De
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): DealsHolder {
-        val view = DealsHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.holder_deal, parent, false))
 
-        return view
+        return DealsHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.holder_deal, parent, false))
     }
 
     override fun getItemCount(): Int {

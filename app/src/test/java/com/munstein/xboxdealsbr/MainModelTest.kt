@@ -10,9 +10,9 @@ import org.junit.Test
  */
 class MainModelTest {
 
-    val mainModelOkHTTP = MainModelOkHTTP()
-    val testObserver = TestSubscriber <String>()
-    val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
+    private val mainModelOkHTTP = MainModelOkHTTP()
+    private val testObserver = TestSubscriber <String>()
+    private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
     @Test
     fun shoudlAssertComplete() {

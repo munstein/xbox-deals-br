@@ -9,11 +9,11 @@ import io.reactivex.Flowable
 
 interface MainContract {
 
-    interface model {
+    interface Model {
         fun getHTML(url: String): Flowable<String>
     }
 
-    interface view {
+    interface View {
         fun showProgress()
         fun hideProgress()
         fun showReloadFab()
@@ -24,9 +24,9 @@ interface MainContract {
         fun showErrorTitle()
     }
 
-    interface presenter {
+    interface Presenter {
         fun listDeals()
-        fun setView(view: view)
+        fun setView(view: View)
         fun onDestroy()
     }
 }
