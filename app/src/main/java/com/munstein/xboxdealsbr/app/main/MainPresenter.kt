@@ -16,6 +16,7 @@ class MainPresenter(private val model: MainContract.Model, dealsMachineJsoup: ID
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
     override fun listDeals() {
+        view.hideErrorTitle()
         view.showProgress()
         val subscription = model.getHTML(url)
                 .subscribeOn(Schedulers.io())
