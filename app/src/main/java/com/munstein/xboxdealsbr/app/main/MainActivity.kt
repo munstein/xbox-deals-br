@@ -110,4 +110,10 @@ class MainActivity : BaseActivity(), MainContract.View {
             main_txt_title.text = getString(R.string.error_msg)
         }
     }
+
+    override fun hideErrorTitle() {
+        this.runOnUiThread {
+            main_txt_title.text = ""
+        }
+    }
 }

@@ -22,6 +22,7 @@ interface MainContract {
         fun loadDeals(deals: List<Deal>)
         fun loadTitle(title: String)
         fun showErrorTitle()
+        fun hideErrorTitle()
     }
 
     interface Presenter {
