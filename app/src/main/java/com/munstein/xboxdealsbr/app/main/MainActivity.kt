@@ -1,10 +1,11 @@
 package com.munstein.xboxdealsbr.app.main
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.animation.AnimationUtils
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
 import com.munstein.xboxdealsbr.base.BaseActivity
@@ -13,7 +14,6 @@ import com.munstein.xboxdealsbr.model.Deal
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
-import android.view.animation.AnimationUtils
 
 class MainActivity : BaseActivity(), MainContract.View {
 
@@ -43,7 +43,7 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     private fun setupRecycleView() {
-        layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
         val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_fall_down)
         main_deals_recycler_view.layoutAnimation = animation
         main_deals_recycler_view.layoutManager = layoutManager
