@@ -1,6 +1,7 @@
 package com.munstein.xboxdealsbr.app.main
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -77,13 +78,13 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun showMessage(msg: String) {
-        this.runOnUiThread {
-            showToast(msg)
+        runOnUiThread {
+            Snackbar.make(main_root, msg, Snackbar.LENGTH_LONG).show()
         }
     }
 
     override fun loadTitle(title: String) {
-        this.runOnUiThread {
+        runOnUiThread {
             main_txt_title.text = title
         }
     }
@@ -94,25 +95,25 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun hideReloadFab() {
-        this.runOnUiThread {
+        runOnUiThread {
             main_fab_reload.hide()
         }
     }
 
     override fun showReloadFab() {
-        this.runOnUiThread {
+        runOnUiThread {
             main_fab_reload.show()
         }
     }
 
     override fun showErrorTitle() {
-        this.runOnUiThread {
+        runOnUiThread {
             main_txt_title.text = getString(R.string.error_msg)
         }
     }
 
     override fun hideErrorTitle() {
-        this.runOnUiThread {
+        runOnUiThread {
             main_txt_title.text = ""
         }
     }
