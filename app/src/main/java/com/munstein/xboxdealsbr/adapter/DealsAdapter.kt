@@ -9,12 +9,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
+import kotlinx.android.synthetic.main.holder_deal.view.*
 
 /**
  * Created by @Munstein on 25/01/2018. --14:55
  */
 
-class DealsAdapter(private val deals: ArrayList<Deal>) : androidx.recyclerview.widget.RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
+class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsAdapter.DealsHolder>() {
     override fun onBindViewHolder(holder: DealsHolder, position: Int) {
         val deal = deals[position]
         with(deal) {
@@ -39,11 +40,10 @@ class DealsAdapter(private val deals: ArrayList<Deal>) : androidx.recyclerview.w
         return deals.size
     }
 
-    class DealsHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-
-        val txtGame: TextView = itemView.findViewById(R.id.deal_txt_title)
-        val txtType: TextView = itemView.findViewById(R.id.deal_txt_type)
-        val txtDiscount: TextView = itemView.findViewById(R.id.deal_txt_discount)
-        val txtValue: TextView = itemView.findViewById(R.id.deal_txt_value)
+    class DealsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val txtGame: TextView = itemView.deal_txt_title
+        val txtType: TextView = itemView.deal_txt_type
+        val txtDiscount: TextView = itemView.deal_txt_discount
+        val txtValue: TextView = itemView.deal_txt_value
     }
 }

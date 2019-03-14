@@ -5,6 +5,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.adapter.DealsAdapter
@@ -43,7 +44,7 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     private fun setupRecycleView() {
-        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
+        layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_fall_down)
         main_deals_recycler_view.layoutAnimation = animation
         main_deals_recycler_view.layoutManager = layoutManager
