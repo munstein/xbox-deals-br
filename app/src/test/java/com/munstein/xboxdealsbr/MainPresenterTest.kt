@@ -1,17 +1,16 @@
 package com.munstein.xboxdealsbr
 
-import com.munstein.xboxdealsbr.app.main.MainContract
+import com.munstein.xboxdealsbr.app.main.IMainContract
 import com.munstein.xboxdealsbr.app.main.MainPresenter
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import io.reactivex.Flowable
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
+import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnit
 
 /**
@@ -22,10 +21,10 @@ class MainPresenterTest {
     private lateinit var presenter: MainPresenter
 
     @Mock
-    lateinit var viewMock: MainContract.View
+    lateinit var viewMock: IMainContract.View
 
     @Mock
-    lateinit var modelMock: MainContract.Model
+    lateinit var modelMock: IMainContract.Model
 
     @Mock
     lateinit var dealsMock: DealsMachineJsoup
@@ -36,24 +35,21 @@ class MainPresenterTest {
 
     @Before
     fun setup() {
-        modelMock = mock(MainContract.Model::class.java)
-        viewMock = mock(MainContract.View::class.java)
-        dealsMock = mock(DealsMachineJsoup::class.java)
+        MockitoAnnotations.initMocks(this)
         presenter = MainPresenter(modelMock, dealsMock)
         presenter.setView(viewMock)
     }
 
     @Test
     fun shouldShowDialog() {
-        `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/")).thenReturn(Flowable.just("hello"))
+        `when`(modelMock.getHTML()).thenReturn(Flowable.just("hello"))
         presenter.listDeals()
         verify(viewMock).showProgress()
     }
 
-    @Ignore
     @Test
     fun shouldShowErrorMsg() {
-        `when`(modelMock.getHTML("https://www.arenaxbox.com.br/tag/deals-with-gold/"))
+        `when`(modelMock.getHTML())
                 .thenReturn(Flowable.error(Exception("error")))
         presenter.listDeals()
         Thread.sleep(2000)
