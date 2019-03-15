@@ -3,14 +3,12 @@ package com.munstein.xboxdealsbr.modules
 import com.munstein.xboxdealsbr.app.main.IMainContract
 import com.munstein.xboxdealsbr.app.main.MainModelOkHTTP
 import com.munstein.xboxdealsbr.app.main.MainPresenter
-import com.munstein.xboxdealsbr.app.main.url.IMainUrlProvider
 import com.munstein.xboxdealsbr.app.main.url.MainUrlProvider
 import com.munstein.xboxdealsbr.core.DealsMachineJsoup
 import com.munstein.xboxdealsbr.core.IDealsMachine
 import com.munstein.xboxdealsbr.url.AppUrls
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -44,5 +42,4 @@ class MainModule {
     fun provideDealsMachine(): IDealsMachine {
         return DealsMachineJsoup()
     }
-
 }

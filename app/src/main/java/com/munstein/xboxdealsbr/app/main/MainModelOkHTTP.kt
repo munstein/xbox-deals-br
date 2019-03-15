@@ -6,7 +6,6 @@ import io.reactivex.Flowable
 import io.reactivex.Flowable.create
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import javax.inject.Inject
 
 /**
  * Created by @Munstein on 30/01/2018. --17:35

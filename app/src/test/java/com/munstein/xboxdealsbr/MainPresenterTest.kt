@@ -47,7 +47,6 @@ class MainPresenterTest {
         verify(viewMock).showProgress()
     }
 
-
     @Test
     fun shouldShowErrorMsg() {
         `when`(modelMock.getHTML())
