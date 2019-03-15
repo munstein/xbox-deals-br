@@ -7,10 +7,10 @@ import io.reactivex.Flowable
  * Created by @Munstein on 21/01/2018. --22:12
  */
 
-interface MainContract {
+interface IMainContract {
 
     interface Model {
-        fun getHTML(url: String): Flowable<String>
+        fun getHTML(): Flowable<String>
     }
 
     interface View {

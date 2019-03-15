@@ -8,9 +8,9 @@ import io.reactivex.schedulers.Schedulers
  * Created by @Munstein on 30/01/2018. --17:24
  */
 
-class MainPresenter(private val model: MainContract.Model, dealsMachineJsoup: IDealsMachine) : MainContract.Presenter {
+class MainPresenter(private val model: IMainContract.Model, dealsMachineJsoup: IDealsMachine) : IMainContract.Presenter {
 
-    private lateinit var view: MainContract.View
+    private lateinit var view: IMainContract.View
     private val dealsMachine: IDealsMachine = dealsMachineJsoup
     private val disposable by lazy { CompositeDisposable() }
     private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
@@ -18,20 +18,20 @@ class MainPresenter(private val model: MainContract.Model, dealsMachineJsoup: ID
     override fun listDeals() {
         view.hideErrorTitle()
         view.showProgress()
-        val subscription = model.getHTML(url)
+        val subscription = model.getHTML()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
                 .subscribe({ html ->
-                    onNext(html)
+                    scrapHtml(html)
                 }, {
-                    onError()
+                    showError()
                 }, {
-                    onComplete()
+                    hideLoadingAndFab()
                 })
         disposable.add(subscription)
     }
 
-    override fun setView(view: MainContract.View) {
+    override fun setView(view: IMainContract.View) {
         this.view = view
     }
 
@@ -40,19 +40,19 @@ class MainPresenter(private val model: MainContract.Model, dealsMachineJsoup: ID
             disposable.dispose()
     }
 
-    private fun onNext(html: String) {
+    private fun scrapHtml(html: String) {
         val dealsList = dealsMachine.getLatestDealsFromHTML(html)
         val title = dealsMachine.getTitle(html)
         view.loadDeals(dealsList)
         view.loadTitle(title)
     }
 
-    private fun onComplete() {
+    private fun hideLoadingAndFab() {
         view.hideProgress()
         view.hideReloadFab()
     }
 
-    private fun onError() {
+    private fun showError() {
         view.hideProgress()
         view.showMessage("Error!")
         view.showErrorTitle()
