@@ -6,4 +6,5 @@ This app displays the current Xbox Deals With Gold (Brazil).
 *as always refactor the code and hunt some bugs  
 *migrate from MVP to MVVM    
 *use fragments   
+*create about screen
 *implement notifications
