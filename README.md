@@ -8,3 +8,4 @@ This app displays the current Xbox Deals With Gold (Brazil).
 *use fragments   
 *create about screen
 *implement notifications
+*add detekt
