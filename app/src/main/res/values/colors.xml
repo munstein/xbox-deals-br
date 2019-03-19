@@ -3,5 +3,5 @@
     <color name="colorPrimary">#33691e</color>
     <color name="colorPrimaryDark">#003d00</color>
     <color name="colorAccent">#6ab04c</color>
-    <color name="white">#eee</color>
+    <color name="customChromeTab">#eee</color>
 </resources>
