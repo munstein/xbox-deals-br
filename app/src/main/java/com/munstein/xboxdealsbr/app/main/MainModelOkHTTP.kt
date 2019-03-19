@@ -15,16 +15,18 @@ class MainModelOkHTTP(private val mainUrlProvider: IMainUrlProvider) : IMainCont
     override fun getHTML(): Flowable<String> {
         val client = OkHttpClient()
         val request = Request.Builder().url(mainUrlProvider.getMainUrl()).build()
-        return create({
+        return create({ emitter ->
             try {
                 val response = client.newCall(request).execute()
                 if (response.isSuccessful) {
-                    it.onNext(response.body()!!.string())
+                    response.body()?.let { body ->
+                        emitter.onNext(body.string())
+                    }
                 }
             } catch (exception: Exception) {
-                it.onError(exception)
+                emitter.onError(exception)
             } finally {
-                it.onComplete()
+                emitter.onComplete()
             }
         }, BackpressureStrategy.LATEST)
     }

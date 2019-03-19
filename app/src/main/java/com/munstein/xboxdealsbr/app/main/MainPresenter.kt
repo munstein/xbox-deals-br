@@ -13,7 +13,6 @@ class MainPresenter(private val model: IMainContract.Model, dealsMachineJsoup: I
     private lateinit var view: IMainContract.View
     private val dealsMachine: IDealsMachine = dealsMachineJsoup
     private val disposable by lazy { CompositeDisposable() }
-    private val url = "https://www.arenaxbox.com.br/tag/deals-with-gold/"
 
     override fun listDeals() {
         view.hideErrorTitle()

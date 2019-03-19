@@ -1,13 +1,6 @@
 package com.munstein.xboxdealsbr.app.main.url
 
-import javax.inject.Inject
-import javax.inject.Named
-
-class MainUrlProvider : IMainUrlProvider {
-
-    @Inject
-    @Named("MAIN_URL")
-    lateinit var url: String
+class MainUrlProvider(val url: String) : IMainUrlProvider {
 
     override fun getMainUrl(): String {
         return url
