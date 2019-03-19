@@ -9,7 +9,6 @@ import com.munstein.xboxdealsbr.core.IDealsMachine
 import com.munstein.xboxdealsbr.url.AppUrls
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 import javax.inject.Singleton
 
 /**

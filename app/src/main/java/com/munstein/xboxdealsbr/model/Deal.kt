@@ -1,9 +1,5 @@
 package com.munstein.xboxdealsbr.model
 
-import android.content.Context
-import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
-
 /**
  * Created by @Munstein on 17/01/2018. --23:33
  */
