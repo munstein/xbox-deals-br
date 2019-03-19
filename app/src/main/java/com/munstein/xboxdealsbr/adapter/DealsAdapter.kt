@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
@@ -22,7 +23,7 @@ class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<De
             holder.txtType.text = type
             holder.txtDiscount.text = discount
             holder.txtValue.text = value
-            holder.txtGame.setOnClickListener {
+            holder.root.setOnClickListener {
                 CustomTabsIntentUtil.launch(url, holder.txtGame.context)
             }
         }
@@ -43,5 +44,6 @@ class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<De
         val txtType: TextView = itemView.deal_txt_type
         val txtDiscount: TextView = itemView.deal_txt_discount
         val txtValue: TextView = itemView.deal_txt_value
+        val root: CardView = itemView.deal_root_cardview
     }
 }
