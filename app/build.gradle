@@ -64,6 +64,7 @@ dependencies {
 
     //ui
     implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    implementation 'com.android.support:customtabs:28.3.0'
 
     //dagger
     kapt 'com.google.dagger:dagger-compiler:2.10'

@@ -20,12 +20,6 @@ import javax.inject.Singleton
 class MainModule {
 
     @Provides
-    @Named("MAIN_URL")
-    fun provideMainUrl(): String {
-        return AppUrls.mainUrl
-    }
-
-    @Provides
     @Singleton
     fun provideMainPresenter(model: IMainContract.Model, dealsMachineJsoup: IDealsMachine): IMainContract.Presenter {
         return MainPresenter(model, dealsMachineJsoup)
@@ -34,7 +28,7 @@ class MainModule {
     @Provides
     @Singleton
     fun provideMainModel(): IMainContract.Model {
-        return MainModelOkHTTP(MainUrlProvider())
+        return MainModelOkHTTP(MainUrlProvider(AppUrls.mainUrl))
     }
 
     @Provides

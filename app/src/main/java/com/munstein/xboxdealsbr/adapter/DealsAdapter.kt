@@ -1,14 +1,13 @@
 package com.munstein.xboxdealsbr.adapter
 
-import android.content.Intent
-import android.net.Uri
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
+import com.munstein.xboxdealsbr.util.CustomTabsIntentUtil
 import kotlinx.android.synthetic.main.holder_deal.view.*
 
 /**
@@ -24,8 +23,7 @@ class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<De
             holder.txtDiscount.text = discount
             holder.txtValue.text = value
             holder.txtGame.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                holder.txtGame.context.startActivity(browserIntent)
+                CustomTabsIntentUtil.launch(url, holder.txtGame.context)
             }
         }
     }
