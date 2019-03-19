@@ -5,7 +5,8 @@
     android:id="@+id/main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.main.MainActivity">
+    tools:context=".app.main.MainActivity"
+    android:background="#FFF">
 
     <include layout="@layout/content_main" />
 
@@ -15,12 +16,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:visibility="gone"
-        android:src="@drawable/ic_reload" />
+        android:src="@drawable/ic_reload"
+        android:visibility="gone" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/main_progress"
-        style="@style/SpinKitView.Wave"
+        style="@style/SpinKitView.DoubleBounce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
