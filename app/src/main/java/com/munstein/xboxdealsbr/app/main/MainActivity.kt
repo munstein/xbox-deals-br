@@ -86,7 +86,7 @@ class MainActivity : BaseActivity(), IMainContract.View {
 
     override fun loadTitle(title: String) {
         runOnUiThread {
-            main_txt_title.text = title
+            main_txt_subtitle.text = title
         }
     }
 
@@ -109,13 +109,13 @@ class MainActivity : BaseActivity(), IMainContract.View {
 
     override fun showErrorTitle() {
         runOnUiThread {
-            main_txt_title.text = getString(R.string.error_msg)
+            main_txt_subtitle.text = getString(R.string.error_msg)
         }
     }
 
     override fun hideErrorTitle() {
         runOnUiThread {
-            main_txt_title.text = ""
+            main_txt_subtitle.text = ""
         }
     }
 }
