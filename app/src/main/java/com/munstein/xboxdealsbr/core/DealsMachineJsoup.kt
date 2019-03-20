@@ -39,7 +39,8 @@ open class DealsMachineJsoup : IDealsMachine {
             val title = doc.select(".post-title").first {
                 it.text().contains("with Gold")
             }
-            title.text()
+            val formattedTitle = title.text().substringAfter("–").trim()
+            formattedTitle
         } catch (exception: Exception) {
             ""
         }

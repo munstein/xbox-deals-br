@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#33691e</color>
     <color name="colorPrimaryDark">#ccc</color>
-    <color name="colorAccent">#6ab04c</color>
+    <color name="colorAccent">#2ecc71</color>
     <color name="customChromeTab">#eee</color>
 </resources>
