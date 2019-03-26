@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">32dp</dimen>
+    <dimen name="title_font_size">28sp</dimen>
+    <dimen name="subtitle_font_size">20sp</dimen>
 </resources>

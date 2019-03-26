@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#ccc</color>
     <color name="colorAccent">#2ecc71</color>
     <color name="customChromeTab">#eee</color>
+    <color name="activityBackground">#FFF</color>
 </resources>
