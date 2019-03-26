@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,30 +11,49 @@
         android:id="@+id/main_txt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/half_default_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:paddingStart="@dimen/default_margin"
         android:paddingEnd="@dimen/default_margin"
-        android:textSize="20sp"
+        android:text="@string/main_title"
+        android:textAlignment="center"
+        android:textSize="@dimen/title_font_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/main_txt_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_default_margin"
+        android:fontFamily="sans-serif"
+        android:paddingStart="@dimen/default_margin"
+        android:paddingEnd="@dimen/default_margin"
+        android:textAlignment="center"
+        android:textSize="@dimen/subtitle_font_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_txt_title"
+        tools:text="19/03 - 25/03" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_deals_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/default_margin"
         android:layout_marginTop="@dimen/half_default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="@dimen/fade_length"
         android:nestedScrollingEnabled="false"
+        android:requiresFadingEdge="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_txt_title"
+        app:layout_constraintTop_toBottomOf="@+id/main_txt_subtitle"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/holder_deal" />
 
