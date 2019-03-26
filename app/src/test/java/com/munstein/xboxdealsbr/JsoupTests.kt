@@ -30,7 +30,7 @@ class JsoupTests {
     @Test
     fun getLatestDealsLink() {
         val elements = doc.select("article")
-        val h2 = elements.get(0).select(".title")
+        val h2 = elements[0].select(".title")
         val a = h2[0].select("a")
         val url = a.attr("href")
         Assert.assertEquals(true, url.contains("deals-with-gold"))
