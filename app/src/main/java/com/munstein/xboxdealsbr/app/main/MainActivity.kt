@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.munstein.xboxdealsbr.R
-import com.munstein.xboxdealsbr.adapter.DealsAdapter
+import com.munstein.xboxdealsbr.app.main.adapter.DealsAdapter
 import com.munstein.xboxdealsbr.base.BaseActivity
 import com.munstein.xboxdealsbr.base.BaseApp
 import com.munstein.xboxdealsbr.model.Deal
