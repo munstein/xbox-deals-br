@@ -5,4 +5,5 @@
     <color name="colorAccent">#2ecc71</color>
     <color name="customChromeTab">#eee</color>
     <color name="activityBackground">#FFF</color>
+    <color name="comp">#54a0ff</color>
 </resources>

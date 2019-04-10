@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_txt_title"
-        tools:text="19/03 - 25/03" />
+        tools:text="03/06 - 05/07" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_deals_recycler_view"
