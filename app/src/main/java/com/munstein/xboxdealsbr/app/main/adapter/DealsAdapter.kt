@@ -1,14 +1,10 @@
 package com.munstein.xboxdealsbr.app.main.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.munstein.xboxdealsbr.R
 import com.munstein.xboxdealsbr.model.Deal
-import com.munstein.xboxdealsbr.util.CustomTabsIntentUtil
 import kotlinx.android.synthetic.main.item_deal.view.*
 
 /**
@@ -16,17 +12,9 @@ import kotlinx.android.synthetic.main.item_deal.view.*
  */
 
 class DealsAdapter(private val deals: ArrayList<Deal>) : RecyclerView.Adapter<DealsViewHolder>() {
-    override fun onBindViewHolder(viewHolder: DealsViewHolder, position: Int) {
-        viewHolder.bind(deals[position])
-    }
+    override fun onBindViewHolder(viewHolder: DealsViewHolder, position: Int) = viewHolder.bind(deals[position])
 
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): DealsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): DealsViewHolder = DealsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_deal, parent, false))
 
-        return DealsViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_deal, parent, false))
-    }
-
-    override fun getItemCount(): Int {
-        return deals.size
-    }
+    override fun getItemCount(): Int = deals.size
 }

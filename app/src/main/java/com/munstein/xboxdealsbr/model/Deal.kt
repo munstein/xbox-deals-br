@@ -9,7 +9,7 @@ data class Deal(
     val discount: String,
     val value: String,
     val url: String
-){
+) {
     companion object {
         const val TYPE_GAME = "Jogo"
         const val TYPE_COMP = "Comp."
